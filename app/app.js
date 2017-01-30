@@ -3,7 +3,7 @@
 /**
  * @ngdoc overview
  * @name personnalExpenseApp
- * @description
+ * @description inital configuration
  * # personnalExpenseApp
  *
  * Main module of the application.
@@ -15,24 +15,21 @@ angular
     'ngResource',
     'ui.router',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'datatable' // always adding your module in conf
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
     $stateProvider
-	.state(
-		'home', {
-			url: '/',
-			templateUrl: 'modules/main/view/main.html',
-			controller: 'MainCtrl',
-        controllerAs: 'main',
-		}
-	).state(
-		'about', {
-			url: '/about',
-			templateUrl: 'modules/about/view/about.html',
-			controller: 'AboutCtrl',
-      controllerAs: 'about',
-		}
-	);
+    .state(
+      'home', {
+        url: '/',
+        templateUrl: 'modules/main/view/main.html',
+        controller: 'MainCtrl',
+          controllerAs: 'main',
+      }
+    );
   });
+  
+  // define your modules here, don't forget to use global conf ['personnalExpenseApp']
+  angular.module('datatable', ['personnalExpenseApp']);
