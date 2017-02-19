@@ -72,20 +72,25 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/highcharts/highcharts.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <!--conf & base -->
-        <script src="config.js"></script> 
+        <!--conf & base --> 
         <script src="app.js"></script>
+        <script src="config.js"></script>
 
         <!--module main -->
         <script src="modules/main/controller/main.js"></script>
 
         <!-- module datatable -->
+        <script src="modules/category/factory/category.factory.js"></script>
+        <!-- module datatable -->
         <script src="modules/datatable/config/datatable.route.js"></script>
         <script src="modules/datatable/controller/datatable.js"></script>
+        <script src="modules/datatable/factory/datatable.factory.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -16,7 +16,15 @@ angular.module('datatable')
         }).state('datatable.list', {
             url: '/list',
             templateUrl: 'modules/datatable/view/datatable.html',
-            controller: 'DatatableCtrl as datatable', 
+            controller: 'DatatableCtrl as datatable',
+            resolve: {
+                DatatableResolve: function ($stateParams, $state, DatatableFactory) {
+                    return DatatableFactory.getAll().$promise;
+                },
+                CategoryResolve: function ($stateParams, $state, CategoryFactory) {
+                    return CategoryFactory.getAll().$promise;
+                }
+            }
         });
     }
 );

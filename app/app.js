@@ -16,7 +16,8 @@ angular
     'ui.router',
     'ngSanitize',
     'ngTouch',
-    'datatable' // always adding your module in conf
+    'datatable', // always adding your module in conf
+    'category' // always adding your module in conf
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
@@ -33,3 +34,4 @@ angular
   
   // define your modules here, don't forget to use global conf ['personnalExpenseApp']
   angular.module('datatable', ['personnalExpenseApp']);
+  angular.module('category', ['personnalExpenseApp']);

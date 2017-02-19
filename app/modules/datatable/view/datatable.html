@@ -1,1 +1,18 @@
-<p>This is the datatable view.</p>
+<table class="table">
+  <thead class="thead-default">
+    <tr>
+      <th>Date</th>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="exp in datatable.data">
+      <th scope="row">{{exp.date | date}}</th>
+      <td>{{exp.name}}</td>
+      <td>{{exp.amount}}</td>
+      <td>{{datatable.getCategory(exp.category)}}</td>
+    </tr>
+  </tbody>
+</table>
