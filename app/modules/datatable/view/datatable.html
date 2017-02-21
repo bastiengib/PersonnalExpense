@@ -1,3 +1,4 @@
+<h2>List of Expenses</h1>
 <table class="table">
   <thead class="thead-default">
     <tr>
@@ -5,6 +6,11 @@
       <th>Name</th>
       <th>Amount</th>
       <th>Category</th>
+      <th>
+        <div class="pull-right">
+          <button class="btn btn-sm btn-primary" ui-sref="datatable.add"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add</button>
+        </div>
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -13,6 +19,16 @@
       <td>{{exp.name}}</td>
       <td>{{exp.amount}}</td>
       <td>{{datatable.getCategory(exp.category)}}</td>
+      <td>
+        <div class="btn-group pull-right" role="group">
+            <button type="button" class="btn btn-sm btn-info" ui-sref="datatable.update({_id:exp._id})">
+                <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-sm btn-danger" ng-click="datatable.delete(datatable.factory, exp._id)">
+                <span class="fa fa-ban" aria-hidden="true"></span>
+            </button>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>

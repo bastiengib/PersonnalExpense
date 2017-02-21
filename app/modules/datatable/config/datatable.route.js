@@ -25,6 +25,18 @@ angular.module('datatable')
                     return CategoryFactory.getAll().$promise;
                 }
             }
+        }).state('datatable.add', {
+            url: '/new',
+            templateUrl: 'modules/datatable/view/datatable.form.html',
+            controller: 'DatatableFormCtrl as datatable',
+            resolve: {
+                CategoryResolve: function ($stateParams, $state, CategoryFactory) {
+                    return CategoryFactory.getAll().$promise;
+                },
+                FormResolve: function () {
+                    return null;
+                }
+            }
         });
     }
 );
