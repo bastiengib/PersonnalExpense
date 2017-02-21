@@ -31,11 +31,12 @@
         <button type="button" class="btn btn-info" ui-sref="datatable.list" tooltip-placement="top" uib-tooltip="Go to the list">
             <i class="fa fa-list-ul" aria-hidden="true"></i> List
         </button>
-        <button type="button" class="btn btn-info" ng-if="datatable.data._id" ng-click="datatable.update()" ng-disabled="!datatableForm.$valid">
-            <span class="fa-pencil-square-o" aria-hidden="true"></span> Update
+        <button type="button" class="btn btn-info" ng-if="datatable.data._id" ng-click="datatable.update(datatable.factory, datatable.data, 'datatable.list')" ng-disabled="!datatableForm.$valid">
+            <span class="fa fa-pencil-square-o" aria-hidden="true"></span> Update
         </button>
         <button type="button" class="btn btn-success" ng-if="!datatable.data._id" ng-click="datatable.create(datatable.factory, datatable.data, 'datatable.list')"  ng-disabled="!datatableForm.$valid">
             <span class="fa fa-plus-circle" aria-hidden="true"></span> Create
         </button>
     </div>
 </form>
+<pre>{{datatable.data.date}}</pre>

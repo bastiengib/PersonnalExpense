@@ -16,7 +16,7 @@ angular.module('datatable')
       this.factory = DatatableFactory;
       if (!this.data) {
         this.data = {};
-        this.data.date = moment().format("YYYY-MM-DD");
+        this.data.date = new Date();
       }      
     }
 

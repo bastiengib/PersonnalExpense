@@ -29,7 +29,7 @@ angular.module('item')
     ItemManager.prototype.update = function (factory, item, redirectLocation) {
         var valid = true;
         if (valid) {  
-            this.factory.update({ id: itemID }, item, function (item) {
+            this.factory.update({ id: item._id }, item, function (item) {
                 Notification.success({ message: 'the item was succesfully updated :)', title: 'Success' });
                 if (redirectLocation)
                     $state.go(redirectLocation);

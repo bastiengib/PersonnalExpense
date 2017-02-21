@@ -37,6 +37,20 @@ angular.module('datatable')
                     return null;
                 }
             }
+        })
+        .state('datatable.update', {
+            url: '/:id',
+            templateUrl: 'modules/datatable/view/datatable.form.html',
+            controller: 'DatatableFormCtrl as datatable',
+            resolve: {
+                CategoryResolve: function ($stateParams, $state, CategoryFactory) {
+                    return CategoryFactory.getAll().$promise;
+                },
+                FormResolve: function ($stateParams, $state, DatatableFactory) {
+                    var _id = $stateParams.id === "" ? $state.params.id : $stateParams.id;
+                    return DatatableFactory.get({id:_id}).$promise;
+                }
+            }
         });
     }
 );
