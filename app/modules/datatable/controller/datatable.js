@@ -26,6 +26,14 @@ angular.module('datatable')
       return object.name;
     }
 
+    Datatable.prototype.getCategoryColor = function(id) {
+      var object = _.find(this.categories, function(item){
+        return item._id === id;
+      });
+
+      return object.color;
+    }
+
     Datatable.prototype.modal = function($id) {
       var expense = _.find(this.data, function(obj) {
         return obj._id === $id;

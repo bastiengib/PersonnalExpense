@@ -18,6 +18,7 @@ angular
     'ngTouch',
     'ui-notification',
     'bootstrap-datepicker',
+    'colorpicker.module',
     // always adding your module in conf
     'datatable',
     'category', 

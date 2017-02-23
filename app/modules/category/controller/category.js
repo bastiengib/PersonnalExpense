@@ -20,5 +20,9 @@ angular.module('category')
     Category.prototype = Object.create(ItemManager.__proto__);
     Category.constructor = Category;
 
+    Category.prototype.color = function ($color) {
+      return {'background-color': $color };
+    }
+
     return new Category();
   });

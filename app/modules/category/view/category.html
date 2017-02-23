@@ -9,7 +9,11 @@
     <tr>
       <form name="categoryForm">
         <th class="align-middle">
-          <input class="form-control form-control-sm" type="text" id="name" ng-model="category.form.name" required />
+          <div class="input-group">
+            <input class="form-control form-control-sm" type="text" id="name" ng-model="category.form.name" required />
+            <span class="input-group-addon" id="basic-addon2">color</span>
+            <input class="form-control form-control-sm col-2"colorpicker ng-model="category.form.color" type="text" ng-style="category.color(category.form.color)">
+          </div>
         </th>
         <th class="align-middle">
           <button class="btn btn-outline-primary pull-right" ng-click="category.create(category.factory, category.form)" ng-disabled="!categoryForm.$valid">
@@ -19,7 +23,7 @@
       </form>
     </tr>
     <tr ng-repeat="exp in category.data">
-      <td class="align-middle">{{exp.name}}</td>
+      <td ng-style="category.color(exp.color)" class="align-middle">{{exp.name}}</td>
       <td class="align-middle">
           <button type="button" class="btn btn-outline-danger pull-right" ng-click="category.delete(category.factory, exp._id, 'category.list')">
               <span class="fa fa-ban" aria-hidden="true"></span>
