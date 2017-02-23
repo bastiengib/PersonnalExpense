@@ -17,6 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui-notification',
+    'bootstrap-datepicker',
     // always adding your module in conf
     'datatable',
     'category', 

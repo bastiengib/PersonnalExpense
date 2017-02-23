@@ -1,6 +1,4 @@
-<h2 ng-if="!datatable.data._id">Create new Expense</h2>
-<h2 ng-if="datatable.data._id">Update Expense</h2>
-<form name="datatableForm">
+<form name="datatableForm" class="align-self-center">
   <div class="form-group row">
     <label class="col-2 col-form-label">Name</label>
     <div class="col-10">
@@ -16,7 +14,12 @@
   <div class="form-group row">
     <label class="col-2 col-form-label">Date</label>
     <div class="col-10">
-        <input class="form-control" type="date" id="date" ng-model="datatable.data.date" required />
+        <input bootstrap-datepicker required type="text" class="form-control"
+        placeholder="JJ/MM/AAAA"
+        ng-model="datatable.data.date"
+        datepicker-io-format="YYYY-MM-DD"
+        datepicker-options="datatable.dateOptions"
+        orientation="bottom" required/>
     </div>
   </div>
   <div class="form-group row">
@@ -27,18 +30,25 @@
         </select>
     </div>
   </div>
-    <div class="btn-group" role="group">
-        <button type="button" class="btn btn-info" ui-sref="datatable.list" tooltip-placement="top" uib-tooltip="Go to the list">
-            <i class="fa fa-list-ul" aria-hidden="true"></i> List
-        </button>
-        <button type="button" class="btn btn-info" ng-if="datatable.data._id" ng-click="datatable.update(datatable.factory, datatable.data, 'datatable.list')" ng-disabled="!datatableForm.$valid">
-            <span class="fa fa-pencil-square-o" aria-hidden="true"></span> Update
-        </button>
-        <button type="button" class="btn btn-success" ng-if="!datatable.data._id" ng-click="datatable.create(datatable.factory, datatable.data, 'datatable.list')"  ng-disabled="!datatableForm.$valid">
-            <span class="fa fa-plus-circle" aria-hidden="true"></span> Create
-        </button>
-    </div>
-    <button type="button" class="btn btn-danger pull-right" ng-if="datatable.data._id" ng-click="datatable.delete(datatable.factory, datatable.data._id, 'datatable.list')" >
-        <span class="fa fa-ban" aria-hidden="true"></span> Update
-    </button>
 </form>
+
+<nav class="navbar navbar-light fixed-bottom bg-faded">
+    <form class="form-inline">
+        <a class="navbar-brand" ng-if="!datatable.data._id">Create new Expense</a>
+        <a class="navbar-brand" ng-if="datatable.data._id">Update Expense</a>
+        <div class="btn-group" >
+            <button type="button" class="btn btn-outline-info" ui-sref="datatable.list" tooltip-placement="top" uib-tooltip="Go to the list">
+                <i class="fa fa-list-ul" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-outline-primary" ng-if="datatable.data._id" ng-click="datatable.update(datatable.factory, datatable.data, 'datatable.list')" ng-disabled="!datatableForm.$valid">
+                <span class="fa fa-check" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-outline-success" ng-if="!datatable.data._id" ng-click="datatable.create(datatable.factory, datatable.data, 'datatable.list')"  ng-disabled="!datatableForm.$valid">
+                <span class="fa fa-check" aria-hidden="true"></span>
+            </button>
+        </div>
+        <button type="button" class="btn btn-outline-danger navbar-toggler-right" ng-if="datatable.data._id" ng-click="datatable.delete(datatable.factory, datatable.data._id, 'datatable.list')" >
+            <span class="fa fa-ban" aria-hidden="true"></span>
+        </button>
+    </form>
+</nav>

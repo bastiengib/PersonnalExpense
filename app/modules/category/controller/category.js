@@ -12,7 +12,9 @@ angular.module('category')
     function Category() {
       this.data = CategoryResolve;
       this.factory = CategoryFactory;
-      console.log(this.data);
+      this.form = {
+        name: ''
+      };
     }
 
     Category.prototype = Object.create(ItemManager.__proto__);

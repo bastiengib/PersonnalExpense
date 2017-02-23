@@ -37,11 +37,12 @@ angular.module('datatable')
           size: 'large',
           buttons: {
               confirm: {
-                  label: '<i class="fa fa-ban"></i> Delete',
-                  className: 'btn-danger pull-right'
+                  label: '<i class="fa fa-ban"></i>',
+                  className: 'btn-outline-danger pull-right'
               },
               cancel: {
-                  label: '<i class="fa fa-close"></i> Close'
+                  label: '<i class="fa fa-close"></i>',
+                  className: 'btn-outline-info pull-right'
               }
           },
           callback: function (result) {

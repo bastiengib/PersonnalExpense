@@ -1,25 +1,35 @@
-<h2>List of Expenses</h1>
 <table class="table">
   <thead class="thead-default">
     <tr>
-      <th>Name</th>
-      <th>
-        <div class="pull-right">
-          <button class="btn btn-sm btn-primary" ui-sref="category.add"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add</button>
-        </div>
-      </th>
+      <th class="align-middle">Name</th>
+      <th class="align-middle"><div class="pull-right">Action</div></th>
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <form name="categoryForm">
+        <th class="align-middle">
+          <input class="form-control form-control-sm" type="text" id="name" ng-model="category.form.name" required />
+        </th>
+        <th class="align-middle">
+          <button class="btn btn-outline-primary pull-right" ng-click="category.create(category.factory, category.form)" ng-disabled="!categoryForm.$valid">
+            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+          </button>
+        </th>
+      </form>
+    </tr>
     <tr ng-repeat="exp in category.data">
-      <td>{{exp.name}}</td>
-      <td>
-        <div class="btn-group pull-right" role="group">
-            <button type="button" class="btn btn-sm btn-danger" ui-sref="category.delete({id:exp._id})">
-                <span class="fa fa-ban" aria-hidden="true"></span>
-            </button>
-        </div>
+      <td class="align-middle">{{exp.name}}</td>
+      <td class="align-middle">
+          <button type="button" class="btn btn-outline-danger pull-right" ng-click="category.delete(category.factory, exp._id, 'category.list')">
+              <span class="fa fa-ban" aria-hidden="true"></span>
+          </button>
       </td>
     </tr>
   </tbody>
 </table>
+<nav class="navbar navbar-light fixed-bottom bg-faded">
+    <form class="form-inline">
+        <a class="navbar-brand" >List of Categories</a>
+    </form>
+</nav>

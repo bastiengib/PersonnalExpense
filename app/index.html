@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="bower_components/angular-ui-notification/dist/angular-ui-notification.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -32,6 +34,8 @@
         <ul class="navbar-nav">
           <li class="nav-item active">
             <a class="nav-link" ui-sref="datatable.list">Datatable</a>
+          </li>
+          <li class="nav-item active">
             <a class="nav-link" ui-sref="category.list">Categories</a>
           </li>
         </ul>
@@ -42,11 +46,11 @@
       <ui-view></ui-view>
     </div>
 
-    <div class="footer">
+    <!--<div class="footer">
       <div class="container">
         <p><span class="glyphicon glyphicon-heart"></span> developments pending ...</p>
       </div>
-    </div>
+    </div>-->
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -62,7 +66,7 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/tether/dist/js/tether.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
@@ -78,6 +82,9 @@
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/bootbox.js/bootbox.js"></script>
     <script src="bower_components/angular-ui-notification/dist/angular-ui-notification.js"></script>
+    <script src="bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+    <script src="bower_components/angular-bootstrap-datepicker/angular-bootstrap-datepicker.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

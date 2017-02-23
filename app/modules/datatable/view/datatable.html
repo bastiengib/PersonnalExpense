@@ -1,34 +1,33 @@
-<h2>List of Expenses</h1>
 <table class="table">
   <thead class="thead-default">
     <tr>
-      <th>Date</th>
-      <th>Name</th>
-      <th>Amount</th>
-      <th>Category</th>
-      <th>
-        <div class="pull-right">
-          <button class="btn btn-sm btn-primary" ui-sref="datatable.add"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add</button>
-        </div>
+      <th class="align-middle">Date</th>
+      <th class="align-middle">Name</th>
+      <th class="align-middle">Amount</th>
+      <th class="align-middle">Category</th>
+      <th class="align-middle">
+        <button class="btn btn-outline-primary pull-right" ui-sref="datatable.add"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
       </th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="exp in datatable.data">
-      <th scope="row">{{exp.date | date}}</th>
-      <td>{{exp.name}}</td>
-      <td>{{exp.amount}}</td>
-      <td>{{datatable.getCategory(exp.category)}}</td>
-      <td>
-        <div class="btn-group pull-right" role="group">
-            <button type="button" class="btn btn-sm btn-info" ng-click="datatable.modal(exp._id)">
-                <span class="fa fa-info-circle" aria-hidden="true"></span>
-            </button>
-            <button type="button" class="btn btn-sm btn-primary" ui-sref="datatable.update({id:exp._id})">
-                <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
-            </button>
-        </div>
+      <th class="align-middle" scope="row" ng-click="datatable.modal(exp._id)">{{exp.date | date}}</th>
+      <td class="align-middle" ng-click="datatable.modal(exp._id)">{{exp.name}}</td>
+      <td class="align-middle" ng-click="datatable.modal(exp._id)">{{exp.amount}}</td>
+      <td class="align-middle" ng-click="datatable.modal(exp._id)">{{datatable.getCategory(exp.category)}}</td>
+      <td class="align-middle ">
+          <button type="button" class="btn btn-outline-primary pull-right" ui-sref="datatable.update({id:exp._id})">
+              <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
+          </button>
       </td>
     </tr>
   </tbody>
 </table>
+
+<nav class="navbar navbar-light fixed-bottom bg-faded">
+    <form class="form-inline">
+        <a class="navbar-brand" >List of Expenses</a>
+        <button class="btn btn-outline-primary navbar-toggler-right" ui-sref="datatable.add"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+    </form>
+</nav>

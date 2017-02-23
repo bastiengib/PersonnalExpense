@@ -14,6 +14,11 @@ angular.module('datatable')
       this.categories = CategoryResolve;
       this.data = FormResolve;
       this.factory = DatatableFactory;
+
+      this.dateOptions = {
+        "orientation": "auto bottom"
+      };
+
       if (!this.data) {
         this.data = {};
         this.data.date = new Date();
