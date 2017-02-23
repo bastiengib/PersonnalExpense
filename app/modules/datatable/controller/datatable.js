@@ -7,7 +7,7 @@
  * @description Lead the datatable list
  */
 angular.module('datatable')
-  .controller('DatatableCtrl', function ($filter, DatatableFactory, ItemManager, DatatableResolve, CategoryResolve) {
+  .controller('DatatableCtrl', function ($state, $filter, DatatableFactory, ItemManager, DatatableResolve, CategoryResolve) {
 
     function Datatable() {
       this.data = DatatableResolve;
@@ -31,11 +31,25 @@ angular.module('datatable')
         return obj._id === $id;
       });
 
-      bootbox.alert({
+      bootbox.confirm({
           title: expense.name,
           message: "<p>"+expense.amount+"</p><p>"+$filter('date')(expense.date)+"</p><p>"+this.getCategory(expense.category)+"</p>",
-          size: 'large'
-      });
+          size: 'large',
+          buttons: {
+              confirm: {
+                  label: '<i class="fa fa-ban"></i> Delete',
+                  className: 'btn-danger pull-right'
+              },
+              cancel: {
+                  label: '<i class="fa fa-close"></i> Close'
+              }
+          },
+          callback: function (result) {
+              if (result) {
+                this.delete(this.factory, $id, 'datatable.list');
+              }
+          }.bind(this)
+      }).bind(this);
     }
 
     return new Datatable();

@@ -1,0 +1,25 @@
+<h2>List of Expenses</h1>
+<table class="table">
+  <thead class="thead-default">
+    <tr>
+      <th>Name</th>
+      <th>
+        <div class="pull-right">
+          <button class="btn btn-sm btn-primary" ui-sref="category.add"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add</button>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="exp in category.data">
+      <td>{{exp.name}}</td>
+      <td>
+        <div class="btn-group pull-right" role="group">
+            <button type="button" class="btn btn-sm btn-danger" ui-sref="category.delete({id:exp._id})">
+                <span class="fa fa-ban" aria-hidden="true"></span>
+            </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
