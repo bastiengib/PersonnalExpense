@@ -21,6 +21,7 @@ angular
     'colorpicker.module',
     // always adding your module in conf
     'datatable',
+    'template',
     'category', 
     'item'
   ])
@@ -40,5 +41,6 @@ angular
   // define your modules here, don't forget to use global conf ['personnalExpenseApp']
   angular.module('item', ['personnalExpenseApp']);
   angular.module('datatable', ['personnalExpenseApp']);
+  angular.module('template', ['personnalExpenseApp']);
   angular.module('category', ['personnalExpenseApp']);
 

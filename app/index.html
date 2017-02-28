@@ -26,8 +26,8 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-toggleable-md navbar-light fixed-top bg-faded">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" ng-click="collapse = !collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <a class="navbar-brand"  ui-sref="home">Personnal Expense</a>
@@ -37,13 +37,16 @@
             <a class="nav-link" ui-sref="datatable.list">Datatable</a>
           </li>
           <li class="nav-item active">
+            <a class="nav-link" ui-sref="template.list">Templates</a>
+          </li>
+          <li class="nav-item active">
             <a class="nav-link" ui-sref="category.list">Categories</a>
           </li>
         </ul>
       </div>
     </nav>
 
-    <div class="container" style="margin-top:20px;">
+    <div class="container" style="margin-top:66px;">
       <ui-view></ui-view>
     </div>
 
@@ -106,6 +109,11 @@
         <script src="modules/category/config/category.route.js"></script>
         <script src="modules/category/factory/category.factory.js"></script>
         <script src="modules/category/controller/category.js"></script>
+        <!-- module template -->
+        <script src="modules/template/config/template.route.js"></script>
+        <script src="modules/template/controller/template.js"></script>
+        <script src="modules/template/controller/template.form.js"></script>
+        <script src="modules/template/factory/template.factory.js"></script>
         <!-- module datatable -->
         <script src="modules/datatable/config/datatable.route.js"></script>
         <script src="modules/datatable/controller/datatable.js"></script>

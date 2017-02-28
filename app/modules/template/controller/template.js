@@ -2,23 +2,23 @@
 
 /**
  * @ngdoc controller
- * @name personnalExpenseApp.controller:Datatable
- * # Datatable controller
- * @description Lead the datatable list
+ * @name personnalExpenseApp.controller:Template
+ * # Template controller
+ * @description Lead the template list
  */
-angular.module('datatable')
-  .controller('DatatableCtrl', function ($state, $filter, DatatableFactory, ItemManager, DatatableResolve, CategoryResolve) {
+angular.module('template')
+  .controller('TemplateCtrl', function ($state, $filter, TemplateFactory, ItemManager, TemplateResolve, CategoryResolve) {
 
-    function Datatable() {
-      this.data = DatatableResolve;
+    function Template() {
+      this.data = TemplateResolve;
       this.categories = CategoryResolve;
-      this.factory = DatatableFactory;
+      this.factory = TemplateFactory;
     }
 
-    Datatable.prototype = Object.create(ItemManager.__proto__);
-    Datatable.constructor = Datatable;
+    Template.prototype = Object.create(ItemManager.__proto__);
+    Template.constructor = Template;
 
-    Datatable.prototype.getCategory = function(id) {
+    Template.prototype.getCategory = function(id) {
       var object = _.find(this.categories, function(item){
         return item._id === id;
       });
@@ -26,7 +26,7 @@ angular.module('datatable')
       return object.name;
     }
 
-    Datatable.prototype.getCategoryColor = function(id) {
+    Template.prototype.getCategoryColor = function(id) {
       var object = _.find(this.categories, function(item){
         return item._id === id;
       });
@@ -34,7 +34,7 @@ angular.module('datatable')
       return object.color;
     }
 
-    Datatable.prototype.modal = function($id) {
+    Template.prototype.modal = function($id) {
       var expense = _.find(this.data, function(obj) {
         return obj._id === $id;
       });
@@ -55,11 +55,11 @@ angular.module('datatable')
           },
           callback: function (result) {
               if (result) {
-                this.delete(this.factory, $id, 'datatable.list');
+                this.delete(this.factory, $id, 'template.list');
               }
           }.bind(this)
       }).bind(this);
     }
 
-    return new Datatable();
+    return new Template();
   });

@@ -4,7 +4,7 @@ angular.module('personnalExpenseApp')
     .constant('APIURL', "http://localhost:7821/api")
     .filter('date', function() {
         return function(input) {
-            return moment(input).format('DD/MM/YYYY (ddd)');
+            return moment(input).format('DD/MM/YYYY');
         }
     })
     .filter('amount', function() {
