@@ -55,10 +55,15 @@ angular.module('datatable')
           },
           callback: function (result) {
               if (result) {
-                this.delete(this.factory, $id, 'datatable.list');
+                this.delete(this.factory, $id, 'datatable.list', true);
               }
           }.bind(this)
       }).bind(this);
+    }
+
+    Datatable.prototype.update = function($event, $id) {
+      $event.stopPropagation();
+      $state.go('datatable.update', {id: $id});
     }
 
     return new Datatable();

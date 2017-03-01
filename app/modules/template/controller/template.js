@@ -55,10 +55,41 @@ angular.module('template')
           },
           callback: function (result) {
               if (result) {
-                this.delete(this.factory, $id, 'template.list');
+                this.delete(this.factory, $id, 'template.list', true);
               }
           }.bind(this)
       }).bind(this);
+    }
+
+    Template.prototype.use = function($event, $id) {
+      $event.stopPropagation();
+      var expense = _.find(this.data, function(obj) {
+        return obj._id === $id;
+      });
+
+      bootbox.prompt({
+          title: "Apply "+expense.name,
+          message: "<p>"+expense.amount+" | "+this.getCategory(expense.category)+"</p>",
+          size: 'small',
+          buttons: {
+              confirm: {
+                  label: '<i class="fa fa-clipboard"></i>',
+                  className: 'btn-outline-success pull-right'
+              },
+              cancel: {
+                  label: '<i class="fa fa-close"></i>',
+                  className: 'btn-outline-info pull-right'
+              }
+          },
+          callback: function (result) {
+
+          }.bind(this)
+      }).bind(this);
+    }
+
+    Template.prototype.update = function($event, $id) {
+      $event.stopPropagation();
+      $state.go('template.update', {id: $id});
     }
 
     return new Template();

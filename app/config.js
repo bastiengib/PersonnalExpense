@@ -12,3 +12,9 @@ angular.module('personnalExpenseApp')
             return (input).toFixed(2);
         }
     });
+
+$(document).on('click',function(e) {
+    if ($( "#navbarNav" ).hasClass( 'show' )) {
+        $('#navbarNav').collapse('hide');
+    }
+});

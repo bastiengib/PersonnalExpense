@@ -1,27 +1,24 @@
-<table class="table">
-  <thead class="thead-default">
-    <tr>
-      <th class="align-middle">Name</th>
-      <th class="align-middle"><div class="pull-right">Amount</div></th>
-      <th class="align-middle text-center">Category</th>
-      <th class="align-middle">
-        <button class="btn btn-outline-primary pull-right" ui-sref="template.add"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="exp in template.data">
-      <td class="align-middle" ng-click="template.modal(exp._id)">{{exp.name}}</td>
-      <td class="align-middle" ng-click="template.modal(exp._id)"><div class=" pull-right">{{exp.amount | amount}} €</div></td>
-      <td class="align-middle text-center" ng-click="template.modal(exp._id)" ng-style="{'background-color': template.getCategoryColor(exp.category)}">{{template.getCategory(exp.category)}}</td>
-      <td class="align-middle">
-          <button type="button" class="btn btn-outline-primary pull-right" ui-sref="template.update({id:exp._id})">
-              <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
-          </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<ul class="list-group" style="padding-bottom: 66px;">
+  <a class="list-group-item list-group-item-action flex-column align-items-start" ng-repeat="tpl in template.data" ng-click="template.modal(tpl._id)">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1" ng-style="{'color': template.getCategoryColor(tpl.category)}">
+        € {{::tpl.amount | amount}}</h5>
+    </div>
+    <div class="d-flex w-100 justify-content-between">
+      <p class="mb-1">
+        {{::tpl.name}}
+      </p>
+      <span>
+      <span class="btn btn-sm btn-outline-success" ng-click="template.use($event, tpl._id)">
+        <span class="fa fa-clipboard" aria-hidden="true"></span>
+      </span>
+      <span class="btn btn-sm btn-outline-primary" ng-click="template.update($event, tpl._id)">
+        <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
+      </span>
+      </span>
+    </div>
+  </a>
+</ul>
 
 <nav class="navbar navbar-light fixed-bottom bg-faded">
     <form class="form-inline">

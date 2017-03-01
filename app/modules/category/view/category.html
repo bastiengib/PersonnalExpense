@@ -16,7 +16,7 @@
           </div>
         </th>
         <th class="align-middle">
-          <button class="btn btn-outline-primary pull-right" ng-click="category.create(category.factory, category.form)" ng-disabled="!categoryForm.$valid">
+          <button class="btn btn-outline-primary pull-right" ng-click="category.create(category.factory, category.form, null, true)" ng-disabled="!categoryForm.$valid">
             <i class="fa fa-plus-circle" aria-hidden="true"></i>
           </button>
         </th>
@@ -25,7 +25,7 @@
     <tr ng-repeat="exp in category.data">
       <td ng-style="category.color(exp.color)" class="align-middle">{{exp.name}}</td>
       <td class="align-middle">
-          <button type="button" class="btn btn-outline-danger pull-right" ng-click="category.delete(category.factory, exp._id, 'category.list')">
+          <button type="button" class="btn btn-outline-danger pull-right" ng-click="category.delete(category.factory, exp._id, 'category.list', true)">
               <span class="fa fa-ban" aria-hidden="true"></span>
           </button>
       </td>

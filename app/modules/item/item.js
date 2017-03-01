@@ -13,12 +13,17 @@ angular.module('item')
 
     }
     
-    ItemManager.prototype.create = function (factory, item, redirectLocation) {
+    ItemManager.prototype.create = function (factory, item, redirectLocation, reload) {
         var valid = true;
+        var _this = this;
         if (valid) {
             this.factory.save({}, item, function (itemCreated) {
+                if (reload) {
+                    _this.data.push(itemCreated.item);
+                }
                 Notification.success({ message: 'the item was succesfully saved :)', title: 'Success' });
-            $state.go(redirectLocation);
+                if (redirectLocation)
+                    $state.go(redirectLocation);
             }.bind(this), function (error) {
                 this.init(error);
                 Notification.error({ message: error.status + ' - ' + error.statusText, title: 'Error (' + error.status + ')' });
@@ -40,20 +45,24 @@ angular.module('item')
         }
     };
 
-    ItemManager.prototype.delete = function (factory, itemID, redirectLocation) {
+    ItemManager.prototype.delete = function (factory, itemID, redirectLocation, reload) {
         var _this = this;
         var _itemID = itemID;
         bootbox.confirm("Are you sure that you want to delete this item?", function (result) {
             if (result) {
-                _this.factory.delete({ id: _itemID }, {}, function () {
-                    _this.init();
+                _this.factory.delete({ id: _itemID }, {}, function (rejected) {
+                    if (reload) {
+                        _this.data = _.reject(_this.data, function (obj) {
+                            return obj._id === itemID;
+                        });
+                    }
                     Notification.warning({ message: 'the item was succesfully deleted :)', title: 'Success' });
                     if (redirectLocation)
                         $state.go(redirectLocation);
-                }.bind(_this), function (error) {
+                }.bind(this), function (error) {
                     _this.init(error);
                     Notification.error({ message: error.status + ' - ' + error.statusText, title: 'Error (' + error.status + ')' });
-                }.bind(_this));
+                }.bind(this));
             }
         });
     };
