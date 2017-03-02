@@ -24,6 +24,9 @@ angular.module('datatable')
                 CategoryResolve: function ($stateParams, $state, CategoryFactory) {
                     return CategoryFactory.getAll().$promise;
                 },
+                auth : function (UserService, $q) {
+                    return UserService.isConnected() ? true : $q.reject({ authenticated: false });
+                }
             }
         }).state('datatable.add', {
             url: '/new',

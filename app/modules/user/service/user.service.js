@@ -7,7 +7,7 @@
  * @description Lead the user list
  */
 angular.module('user')
-  .service('UserService', function (UserFactory, Notification) {
+  .service('UserService', function (UserFactory, Notification, $state) {
 
     function User() {
         this.factory = UserFactory;
@@ -19,6 +19,10 @@ angular.module('user')
         };
     }
 
+    User.prototype.isConnected = function() {
+        return this.token ? true : false;
+    }
+
     User.prototype.connect = function () {
         var params = {
             token: this.user.token,
@@ -28,7 +32,9 @@ angular.module('user')
 
         this.factory.connect({verb: 'connect'}, params, function (user) {
             this.user = user.item;
+            this.token = "toto";
             Notification.success({ message: 'connected', title: 'Hello '+this.user.pseudo });
+            $state.go('datatable.list');
         }.bind(this), function (error) {
             Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')' });
         }.bind(this));
