@@ -5,7 +5,8 @@ function TemplateFactory($resource, APIURL) {
         },
         {
             'getAll': {method: 'GET', isArray:true},
-            'update': {method: 'PUT'}
+            'update': {method: 'PUT'},
+            'apply': {method: 'PUT'}
         }
     );
 }

@@ -7,12 +7,13 @@
  * @description Lead the template list
  */
 angular.module('template')
-  .controller('TemplateCtrl', function ($state, $filter, TemplateFactory, ItemManager, TemplateResolve, CategoryResolve) {
+  .controller('TemplateCtrl', function ($state, $filter, TemplateFactory, ItemManager, TemplateResolve, CategoryResolve, Notification) {
 
     function Template() {
       this.data = TemplateResolve;
       this.categories = CategoryResolve;
       this.factory = TemplateFactory;
+      this.apply = null;
     }
 
     Template.prototype = Object.create(ItemManager.__proto__);
@@ -67,24 +68,23 @@ angular.module('template')
         return obj._id === $id;
       });
 
-      bootbox.prompt({
-          title: "Apply "+expense.name,
-          message: "<p>"+expense.amount+" | "+this.getCategory(expense.category)+"</p>",
-          size: 'small',
-          buttons: {
-              confirm: {
-                  label: '<i class="fa fa-clipboard"></i>',
-                  className: 'btn-outline-success pull-right'
-              },
-              cancel: {
-                  label: '<i class="fa fa-close"></i>',
-                  className: 'btn-outline-info pull-right'
-              }
-          },
-          callback: function (result) {
+      this.apply = {
+        id: $id,
+        date: new Date()
+      };
+    }
 
-          }.bind(this)
-      }).bind(this);
+    Template.prototype.closeUse = function() {
+      this.apply = null;
+    }
+
+    Template.prototype.generate = function() {
+      TemplateFactory.apply({ verb: 'apply' }, this.apply, function (itemCreated) {
+            Notification.success({ message: 'the template was succesfully applied :)', title: 'Success' });
+            this.apply = null;
+        }.bind(this), function (error) {
+            Notification.error({ message: error.status + ' - ' + error.statusText, title: 'Error (' + error.status + ')' });
+        }.bind(this));
     }
 
     Template.prototype.update = function($event, $id) {
