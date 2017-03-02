@@ -25,7 +25,7 @@ angular.module('item')
                 if (redirectLocation)
                     $state.go(redirectLocation);
             }.bind(this), function (error) {
-                Notification.error({ message: error.status + ' - ' + error.statusText, title: 'Error (' + error.status + ')' });
+                Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')' });
             }.bind(this));
         }
     };
@@ -38,7 +38,7 @@ angular.module('item')
                 if (redirectLocation)
                     $state.go(redirectLocation);
             }.bind(this), function (error) {
-                Notification.error({ message: error.status + ' - ' + error.statusText, title: 'Error (' + error.status + ')' });
+                Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')' });
             }.bind(this));
         }
     };
@@ -58,7 +58,7 @@ angular.module('item')
                     if (redirectLocation)
                         $state.go(redirectLocation);
                 }.bind(this), function (error) {
-                    Notification.error({ message: error.status + ' - ' + error.statusText, title: 'Error (' + error.status + ')' });
+                    Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')' });
                 }.bind(this));
             }
         });

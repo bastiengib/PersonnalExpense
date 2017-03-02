@@ -23,7 +23,7 @@ angular.module('datatable')
                 },
                 CategoryResolve: function ($stateParams, $state, CategoryFactory) {
                     return CategoryFactory.getAll().$promise;
-                }
+                },
             }
         }).state('datatable.add', {
             url: '/new',

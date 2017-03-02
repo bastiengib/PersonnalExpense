@@ -23,10 +23,11 @@ angular
     'datatable',
     'template',
     'category', 
-    'item'
+    'item',
+    'user'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/user/login');
     $stateProvider
     .state(
       'home', {
@@ -36,10 +37,15 @@ angular
           controllerAs: 'main',
       }
     );
+  }).run(function($state,$rootScope) {
+    $rootScope.$on("$stateChangeError", function (event, toState, toParams, fromState, fromParams, error) {
+        $state.go("user.login");
+    });
   });
   
   // define your modules here, don't forget to use global conf ['personnalExpenseApp']
   angular.module('item', ['personnalExpenseApp']);
+  angular.module('user', ['personnalExpenseApp']);
   angular.module('datatable', ['personnalExpenseApp']);
   angular.module('template', ['personnalExpenseApp']);
   angular.module('category', ['personnalExpenseApp']);

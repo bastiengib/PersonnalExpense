@@ -79,7 +79,7 @@ angular.module('template')
     }
 
     Template.prototype.generate = function() {
-      TemplateFactory.apply({ verb: 'apply' }, this.apply, function (itemCreated) {
+        TemplateFactory.apply({ verb: 'apply' }, this.apply, function (itemCreated) {
             Notification.success({ message: 'the template was succesfully applied :)', title: 'Success' });
             this.apply = null;
         }.bind(this), function (error) {
