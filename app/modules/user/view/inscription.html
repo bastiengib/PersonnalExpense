@@ -2,27 +2,27 @@
     <div class="jumbotron">
         <h1 class="display-6">Create an account</h1>
         <hr class="my-4">
-        <div class="form-group row">
-            <label class="col-2 col-form-label">First Name</label>
-            <div class="col-10">
-                <input class="form-control" type="text" id="firstname" ng-model="user.data.firstname" required />
+        <div class="form-group  row">
+            <div class="input-group col-12">
+                <span class="input-group-addon col-4">First name</span>
+                <input class="form-control col-8" type="text" id="firstname" ng-model="user.data.firstname" required />
             </div>
         </div>
-        <div class="form-group row">
-            <label class="col-2 col-form-label">Last Name</label>
-            <div class="col-10">
-                <input class="form-control" type="text" id="lastname" ng-model="user.data.lastname" required/>
+        <div class="form-group  row">
+            <div class="input-group col-12">
+                <span class="input-group-addon col-4">Last name</span>
+                <input class="form-control col-8" type="text" id="lastname" ng-model="user.data.lastname" required/>
             </div>
         </div>
-        <div class="form-group row">
-            <label class="col-2 col-form-label">Username</label>
-            <div class="col-10">
+        <div class="form-group  row">
+            <div class="input-group col-12">
+                <span class="input-group-addon col-4">Username</span>
                 <input class="form-control" type="text" id="username" ng-model="user.data.username" required />
             </div>
         </div>
-        <div class="form-group row">
-            <label class="col-2 col-form-label">Password</label>
-            <div class="col-10">
+        <div class="form-group  row">
+            <div class="input-group col-12">
+                <span class="input-group-addon col-4">Password</span>
                 <input class="form-control" type="password" id="password" ng-model="user.data.password" required />
             </div>
         </div>
@@ -30,6 +30,11 @@
         <p class="lead">
            <button type="button" class="btn btn-success col-12" ng-disabled="!userForm.$valid" ng-click="user.create(user.factory, user.data, 'user.login')">
                 <span class="fa fa-user-plus" aria-hidden="true"></span> Create
+            </button>
+        </p>
+        <p class="lead">
+            <button class="btn btn-info col-12" ui-sref="user.login">
+                <span class="fa fa-undo" aria-hidden="true"></span> Back to login
             </button>
         </p>
     </div>

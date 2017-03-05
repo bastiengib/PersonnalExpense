@@ -26,12 +26,12 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <nav ng-controller="MainCtrl as main" class="navbar navbar-toggleable-md navbar-light fixed-top bg-faded">
+    <nav ng-controller="NavbarCtrl as nav" class="navbar navbar-toggleable-md navbar-light fixed-top bg-faded">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" ng-click="collapse = !collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a ng-hide="main.UserService.user.token" class="navbar-brand"  ui-sref="home">Personnal Expense</a>
-      <a ng-show="main.UserService.user.token" class="navbar-brand"  ui-sref="home">Hello {{main.UserService.user.username}}</a>
+      <a ng-hide="nav.UserService.user.token" class="navbar-brand"  ui-sref="home">Personnal Expense</a>
+      <a ng-show="nav.UserService.user.token" class="navbar-brand"  ui-sref="home">Hello {{nav.UserService.user.username}}</a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
@@ -44,8 +44,8 @@
             <a class="nav-link" ui-sref="category.list">Categories</a>
           </li>
           <li role="separator" class="divider"></li>
-          <li ng-show="main.UserService.user.token" class="nav-item active">
-            <a class="nav-link" ng-click="main.UserService.disconnect()">Disconnect</a>
+          <li ng-show="nav.UserService.user.token" class="nav-item active" style="cursor: pointer;">
+            <a class="nav-link" ng-click="nav.UserService.disconnect()">Disconnect</a>
           </li>
         </ul>
       </div>
@@ -108,6 +108,7 @@
 
         <!--module main -->
         <script src="modules/main/controller/main.js"></script>
+        <script src="modules/main/controller/navbar.js"></script>
 
         <!-- module datatable -->
         <script src="modules/user/config/user.route.js"></script>

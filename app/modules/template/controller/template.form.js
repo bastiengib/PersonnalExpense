@@ -7,13 +7,14 @@
  * @description Lead the template list
  */
 angular.module('template')
-  .controller('TemplateFormCtrl', function (TemplateFactory, ItemManager, CategoryResolve, FormResolve) {
+  .controller('TemplateFormCtrl', function (TemplateFactory, ItemManager, CategoryResolve, FormResolve, AMOUNT) {
 
 
     function TemplateForm() {
       this.categories = CategoryResolve;
       this.data = FormResolve;
       this.factory = TemplateFactory;
+      this.AMOUNT = AMOUNT;
 
       if (!this.data) {
         this.data = {};

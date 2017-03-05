@@ -7,13 +7,14 @@
  * @description Lead the datatable list
  */
 angular.module('datatable')
-  .controller('DatatableFormCtrl', function (DatatableFactory, ItemManager, CategoryResolve, FormResolve) {
+  .controller('DatatableFormCtrl', function (DatatableFactory, ItemManager, CategoryResolve, FormResolve, AMOUNT) {
 
 
     function DatatableForm() {
       this.categories = CategoryResolve;
       this.data = FormResolve;
       this.factory = DatatableFactory;
+      this.AMOUNT = AMOUNT;
 
       this.dateOptions = {
         "orientation": "auto bottom"
