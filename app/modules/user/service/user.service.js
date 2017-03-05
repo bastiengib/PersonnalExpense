@@ -13,10 +13,22 @@ angular.module('user')
         this.factory = UserFactory;
         this.user = {
             token: null,
+            _id: null,
             firstname: null,
             lastname: null,
             pseudo: null
         };
+    }
+
+    User.prototype.isConnectedResolve = function($stateParams, $state, $promise) {
+        return $promise.then(function(datas) {
+            return datas;
+        }, function (error) {
+            if (error.status = 401) {
+                Notification.error({ message: error.data.message, title: 'Not Connected' });
+                return $q.reject({ authenticated: false });
+            }
+        }.bind(this));
     }
 
     User.prototype.isConnected = function() {
@@ -32,7 +44,6 @@ angular.module('user')
 
         this.factory.connect({verb: 'connect'}, params, function (user) {
             this.user = user.item;
-            this.token = "toto";
             Notification.success({ message: 'connected', title: 'Hello '+this.user.pseudo });
             $state.go('datatable.list');
         }.bind(this), function (error) {

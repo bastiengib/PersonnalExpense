@@ -18,9 +18,20 @@ angular.module('category')
             templateUrl: 'modules/category/view/category.html',
             controller: 'CategoryCtrl as category',
             resolve: {
-                CategoryResolve: function ($stateParams, $state, CategoryFactory) {
-                    return CategoryFactory.getAll().$promise;
-                }
+                CategoryResolve: function ($stateParams, $state, CategoryFactory, UserService) {
+                    var params = {
+                        'token': UserService.user.token,
+                        'user': UserService.user._id
+                    };
+                    return CategoryFactory.getAll(params).$promise;
+                },
+                auth: function ($stateParams, $state, UserFactory, UserService) {
+                    var params = {
+                        'token': UserService.user.token,
+                        'user': UserService.user._id
+                    };
+                    return UserService.isConnectedResolve($stateParams, $state, UserFactory.checkConnexion(params).$promise);
+                } 
             }
         });
     }

@@ -18,24 +18,50 @@ angular.module('template')
             templateUrl: 'modules/template/view/template.html',
             controller: 'TemplateCtrl as template',
             resolve: {
-                TemplateResolve: function ($stateParams, $state, TemplateFactory) {
-                    return TemplateFactory.getAll().$promise;
+                TemplateResolve: function ($stateParams, $state, TemplateFactory, UserService) {
+                     var params = {
+                        'token': UserService.user.token,
+                        'user': UserService.user._id
+                    };
+                    return TemplateFactory.getAll(params).$promise;
                 },
-                CategoryResolve: function ($stateParams, $state, CategoryFactory) {
-                    return CategoryFactory.getAll().$promise;
-                }
+                CategoryResolve: function ($stateParams, $state, CategoryFactory, UserService) {
+                     var params = {
+                        'token': UserService.user.token,
+                        'user': UserService.user._id
+                    };
+                    return CategoryFactory.getAll(params).$promise;
+                },
+                auth: function ($stateParams, $state, UserFactory, UserService) {
+                    var params = {
+                        'token': UserService.user.token,
+                        'user': UserService.user._id
+                    };
+                    return UserService.isConnectedResolve($stateParams, $state, UserFactory.checkConnexion(params).$promise);
+                } 
             }
         }).state('template.add', {
             url: '/new',
             templateUrl: 'modules/template/view/template.form.html',
             controller: 'TemplateFormCtrl as template',
             resolve: {
-                CategoryResolve: function ($stateParams, $state, CategoryFactory) {
-                    return CategoryFactory.getAll().$promise;
+                CategoryResolve: function ($stateParams, $state, CategoryFactory, UserService) {
+                    var params = {
+                        'token': UserService.user.token,
+                        'user': UserService.user._id
+                    };
+                    return CategoryFactory.getAll(params).$promise;
                 },
                 FormResolve: function () {
                     return null;
-                }
+                },
+                auth: function ($stateParams, $state, UserFactory, UserService) {
+                    var params = {
+                        'token': UserService.user.token,
+                        'user': UserService.user._id
+                    };
+                    return UserService.isConnectedResolve($stateParams, $state, UserFactory.checkConnexion(params).$promise);
+                } 
             }
         })
         .state('template.update', {
@@ -43,12 +69,28 @@ angular.module('template')
             templateUrl: 'modules/template/view/template.form.html',
             controller: 'TemplateFormCtrl as template',
             resolve: {
-                CategoryResolve: function ($stateParams, $state, CategoryFactory) {
-                    return CategoryFactory.getAll().$promise;
+                CategoryResolve: function ($stateParams, $state, CategoryFactory, UserService) {
+                    var params = {
+                        'token': UserService.user.token,
+                        'user': UserService.user._id
+                    };
+                    return CategoryFactory.getAll(params).$promise;
                 },
-                FormResolve: function ($stateParams, $state, TemplateFactory) {
+                FormResolve: function ($stateParams, $state, TemplateFactory, UserService) {
                     var _id = $stateParams.id === "" ? $state.params.id : $stateParams.id;
-                    return TemplateFactory.get({id:_id}).$promise;
+                    var params = {
+                        'token': UserService.user.token,
+                        'user': UserService.user._id,
+                        'id': _id
+                    };
+                    return TemplateFactory.get(params).$promise;
+                },
+                auth: function ($stateParams, $state, UserFactory, UserService) {
+                    var params = {
+                        'token': UserService.user.token,
+                        'user': UserService.user._id
+                    };
+                    return UserService.isConnectedResolve($stateParams, $state, UserFactory.checkConnexion(params).$promise);
                 }
             }
         });

@@ -5,7 +5,8 @@ function UserFactory($resource, APIURL) {
         },
         {
             'update': {method: 'PUT'},
-            'connect': {method: 'POST'}
+            'connect': {method: 'POST'},
+            'checkConnexion' : {method: 'GET'}
 
         }
     );

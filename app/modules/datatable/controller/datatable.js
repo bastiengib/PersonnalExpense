@@ -7,9 +7,10 @@
  * @description Lead the datatable list
  */
 angular.module('datatable')
-  .controller('DatatableCtrl', function ($state, $filter, DatatableFactory, ItemManager, DatatableResolve, CategoryResolve) {
+  .controller('DatatableCtrl', function ($state, $filter, DatatableFactory, ItemManager, DatatableResolve, CategoryResolve, UserService) {
 
     function Datatable() {
+      UserService.resolveReceived = false;
       this.data = DatatableResolve;
       this.categories = CategoryResolve;
       this.factory = DatatableFactory;

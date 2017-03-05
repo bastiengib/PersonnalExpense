@@ -7,48 +7,61 @@
  * @description Lead CRUD function
  */
 angular.module('item')
-  .factory('ItemManager', function (Notification, $state) {
+  .factory('ItemManager', function (Notification, $state, UserService) {
 
     function ItemManager () {
 
     }
     
     ItemManager.prototype.create = function (factory, item, redirectLocation, reload) {
-        var valid = true;
         var _this = this;
-        if (valid) {
-            this.factory.save({}, item, function (itemCreated) {
-                if (reload) {
-                    _this.data.push(itemCreated.item);
-                }
-                Notification.success({ message: 'the item was succesfully saved :)', title: 'Success' });
-                if (redirectLocation)
-                    $state.go(redirectLocation);
-            }.bind(this), function (error) {
-                Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')' });
-            }.bind(this));
-        }
+        var params = {
+            'token': UserService.user.token,
+            'user': UserService.user.pseudo
+        };
+        this.factory.save(params, item, function (itemCreated) {
+            if (reload) {
+                _this.data.push(itemCreated.item);
+            }
+            Notification.success({ message: 'the item was succesfully saved :)', title: 'Success' });
+            if (redirectLocation)
+                $state.go(redirectLocation);
+        }.bind(this), function (error) {
+            Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')' });
+            if (error.status = 401) {
+                return $q.reject({ authenticated: false });
+            }
+        }.bind(this));
     };
 
     ItemManager.prototype.update = function (factory, item, redirectLocation) {
-        var valid = true;
-        if (valid) {  
-            this.factory.update({ id: item._id }, item, function (item) {
-                Notification.success({ message: 'the item was succesfully updated :)', title: 'Success' });
-                if (redirectLocation)
-                    $state.go(redirectLocation);
-            }.bind(this), function (error) {
-                Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')' });
-            }.bind(this));
-        }
+        var params = {
+            'token': UserService.user.token,
+            'user': UserService.user._id,
+            'id': item._id
+        };
+        this.factory.update(params, item, function (item) {
+            Notification.success({ message: 'the item was succesfully updated :)', title: 'Success' });
+            if (redirectLocation)
+                $state.go(redirectLocation);
+        }.bind(this), function (error) {
+            Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')' });
+            if (error.status = 401) {
+                return $q.reject({ authenticated: false });
+            }
+        }.bind(this));
     };
 
     ItemManager.prototype.delete = function (factory, itemID, redirectLocation, reload) {
         var _this = this;
-        var _itemID = itemID;
+        var params = {
+            'token': UserService.user.token,
+            'user': UserService.user._id,
+            'id': itemID
+        };
         bootbox.confirm("Are you sure that you want to delete this item?", function (result) {
             if (result) {
-                _this.factory.delete({ id: _itemID }, {}, function (rejected) {
+                _this.factory.delete(params, {}, function (rejected) {
                     if (reload) {
                         _this.data = _.reject(_this.data, function (obj) {
                             return obj._id === itemID;
@@ -59,6 +72,9 @@ angular.module('item')
                         $state.go(redirectLocation);
                 }.bind(this), function (error) {
                     Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')' });
+                    if (error.status = 401) {
+                        return $q.reject({ authenticated: false });
+                    }
                 }.bind(this));
             }
         });

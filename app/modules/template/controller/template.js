@@ -7,7 +7,7 @@
  * @description Lead the template list
  */
 angular.module('template')
-  .controller('TemplateCtrl', function ($state, $filter, TemplateFactory, ItemManager, TemplateResolve, CategoryResolve, Notification) {
+  .controller('TemplateCtrl', function ($state, $filter, TemplateFactory, ItemManager, TemplateResolve, CategoryResolve, Notification, UserService) {
 
     function Template() {
       this.data = TemplateResolve;
@@ -79,7 +79,12 @@ angular.module('template')
     }
 
     Template.prototype.generate = function() {
-        TemplateFactory.apply({ verb: 'apply' }, this.apply, function (itemCreated) {
+        var params = {
+            'token': UserService.user.token,
+            'user': UserService.user._id,
+            'verb': 'apply'
+        };
+        TemplateFactory.apply(params, this.apply, function (itemCreated) {
             Notification.success({ message: 'the template was succesfully applied :)', title: 'Success' });
             this.apply = null;
         }.bind(this), function (error) {

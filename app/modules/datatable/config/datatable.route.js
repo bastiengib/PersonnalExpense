@@ -18,26 +18,49 @@ angular.module('datatable')
             templateUrl: 'modules/datatable/view/datatable.html',
             controller: 'DatatableCtrl as datatable',
             resolve: {
-                DatatableResolve: function ($stateParams, $state, DatatableFactory) {
-                    return DatatableFactory.getAll().$promise;
+                DatatableResolve: function ($stateParams, $state, DatatableFactory, UserService) {
+                    var params = {
+                        'token': UserService.user.token,
+                        'user': UserService.user._id
+                    };
+                    return DatatableFactory.getAll(params).$promise;
                 },
-                CategoryResolve: function ($stateParams, $state, CategoryFactory) {
-                    return CategoryFactory.getAll().$promise;
+                CategoryResolve: function ($stateParams, $state, CategoryFactory, UserService) {
+                    var params = {
+                        'token': UserService.user.token,
+                        'user': UserService.user._id
+                    };
+                    return CategoryFactory.getAll(params).$promise;
                 },
-                auth : function (UserService, $q) {
-                    return UserService.isConnected() ? true : $q.reject({ authenticated: false });
-                }
+                auth: function ($stateParams, $state, UserFactory, UserService) {
+                    var params = {
+                        'token': UserService.user.token,
+                        'user': UserService.user._id
+                    };
+                    return UserService.isConnectedResolve($stateParams, $state, UserFactory.checkConnexion(params).$promise);
+                } 
             }
         }).state('datatable.add', {
             url: '/new',
             templateUrl: 'modules/datatable/view/datatable.form.html',
             controller: 'DatatableFormCtrl as datatable',
             resolve: {
-                CategoryResolve: function ($stateParams, $state, CategoryFactory) {
-                    return CategoryFactory.getAll().$promise;
+                CategoryResolve: function ($stateParams, $state, CategoryFactory, UserService) {
+                    var params = {
+                        'token': UserService.user.token,
+                        'user': UserService.user._id
+                    };
+                    return $stateParams, $state, CategoryFactory.getAll(params).$promise;
                 },
                 FormResolve: function () {
                     return null;
+                },
+                auth: function ($stateParams, $state, UserFactory, UserService) {
+                    var params = {
+                        'token': UserService.user.token,
+                        'user': UserService.user._id
+                    };
+                    return UserService.isConnectedResolve($stateParams, $state, UserFactory.checkConnexion(params).$promise);
                 }
             }
         })
@@ -46,12 +69,28 @@ angular.module('datatable')
             templateUrl: 'modules/datatable/view/datatable.form.html',
             controller: 'DatatableFormCtrl as datatable',
             resolve: {
-                CategoryResolve: function ($stateParams, $state, CategoryFactory) {
-                    return CategoryFactory.getAll().$promise;
+                CategoryResolve: function ($stateParams, $state, CategoryFactory, UserService) {
+                    var params = {
+                        'token': UserService.user.token,
+                        'user': UserService.user._id
+                    };
+                    return CategoryFactory.getAll(params).$promise;
                 },
-                FormResolve: function ($stateParams, $state, DatatableFactory) {
+                FormResolve: function ($stateParams, $state, DatatableFactory, UserService) {
                     var _id = $stateParams.id === "" ? $state.params.id : $stateParams.id;
-                    return DatatableFactory.get({id:_id}).$promise;
+                    var params = {
+                        'token': UserService.user.token,
+                        'user': UserService.user._id,
+                        'id': _id
+                    };
+                    return DatatableFactory.get(params).$promise;
+                },
+                auth: function ($stateParams, $state, UserFactory, UserService) {
+                    var params = {
+                        'token': UserService.user.token,
+                        'user': UserService.user._id
+                    };
+                    return UserService.isConnectedResolve($stateParams, $state, UserFactory.checkConnexion(params).$promise);
                 }
             }
         });
