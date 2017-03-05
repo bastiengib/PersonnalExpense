@@ -17,7 +17,7 @@ angular.module('item')
         var _this = this;
         var params = {
             'token': UserService.user.token,
-            'user': UserService.user.pseudo
+            'user': UserService.user._id
         };
         this.factory.save(params, item, function (itemCreated) {
             if (reload) {

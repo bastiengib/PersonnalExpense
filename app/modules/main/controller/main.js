@@ -8,13 +8,9 @@
  * Controller of the personnalExpenseApp
  */
 angular.module('personnalExpenseApp')
-	.controller('MainCtrl', function () {
+	.controller('MainCtrl', function (UserService) {
 		function MainCtrlClass () {
-			this.awesomeThings = [
-				'HTML5 Boilerplate',
-				'AngularJS',
-				'Karma'
-			];  
+			this.UserService = UserService;  
 		}
 		
 		return new MainCtrlClass();
