@@ -51,7 +51,7 @@ angular.module('user')
             this.user = user.item;
             $cookies.putObject('PersonnalExpense', this.user);
             Notification.info({ title: 'Connected', message: 'Hello '+this.user.username });
-            $state.go('datatable.list');
+            $state.go('home');
         }.bind(this), function (error) {
             Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')' });
         }.bind(this));

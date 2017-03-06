@@ -13,6 +13,10 @@ angular.module('user')
             url: '/login',
             templateUrl: 'modules/user/view/login.html',
             controller: 'UserCtrl as user'
+        }).state('user.update', {
+            url: '/account',
+            templateUrl: 'modules/user/view/update.html',
+            controller: 'UserCtrl as user'
         });
     }
 );

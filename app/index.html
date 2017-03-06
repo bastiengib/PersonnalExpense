@@ -45,7 +45,9 @@
           <li class="nav-item active">
             <a class="nav-link" ui-sref="category.list">Categories</a>
           </li>
-          <li role="separator" class="divider"></li>
+          <li ng-show="nav.UserService.user.token" class="nav-item active">
+            <a class="nav-link"  ui-sref="user.update">Account</a>
+          </li>
           <li ng-show="nav.UserService.user.token" class="nav-item active" style="cursor: pointer;">
             <a class="nav-link" ng-click="nav.UserService.disconnect()">Disconnect</a>
           </li>
@@ -98,6 +100,9 @@
         <script src="app.js"></script>
         <script src="config.js"></script>
         
+        <!-- Directives -->
+        <script src="directives/compareTo.js"></script>
+
         <!-- module item -->
         <script src="modules/item/item.js"></script>
 

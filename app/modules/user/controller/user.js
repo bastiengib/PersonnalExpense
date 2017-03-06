@@ -13,6 +13,7 @@ angular.module('user')
       this.factory = UserFactory;
       this.apply = null;
       this.service = UserService;
+      this.data = {};
     }
 
     User.prototype = Object.create(ItemManager.__proto__);
