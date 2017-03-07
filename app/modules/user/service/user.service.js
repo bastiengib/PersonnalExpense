@@ -20,7 +20,7 @@ angular.module('user')
         };
 
         var favoriteCookie = $cookies.getObject('PersonnalExpense');        
-        console.log(favoriteCookie);
+        
         if (favoriteCookie)
             this.user = favoriteCookie;
     }
