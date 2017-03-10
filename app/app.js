@@ -19,6 +19,7 @@ angular
     'ui-notification',
     'bootstrap-datepicker',
     'colorpicker.module',
+    'ngProgress',
     // always adding your module in conf
     'datatable',
     'template',
@@ -37,8 +38,25 @@ angular
           controllerAs: 'main',
       }
     );
-  }).run(function($state,$rootScope) {
+  }).run(function($state, $rootScope, ngProgressFactory) {
+    // on insctancie la progressbar
+    $rootScope.progressbar = ngProgressFactory.createInstance();
+    $rootScope.progressbar.setColor('#5491f2');
+
+    $rootScope.$on('$stateChangeStart', function (evt, toState, toParams, fromState) {
+        $rootScope.progressbar.start();
+    });
+
+    $rootScope.$on('$stateChangeSuccess', function (evt, toState, toParams) {
+        $rootScope.progressbar.complete();
+    });
+
+    $rootScope.$on('$stateNotFound', function (evt, notFound, fromState, fromParams) {
+      $rootScope.progressbar.complete();
+    });
+
     $rootScope.$on("$stateChangeError", function (event, toState, toParams, fromState, fromParams, error) {
+        $rootScope.progressbar.complete();
         $state.go("user.login");
     });
   });
