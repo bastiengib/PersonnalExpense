@@ -20,12 +20,14 @@ angular
     'bootstrap-datepicker',
     'colorpicker.module',
     'ngProgress',
+    'chart.js',
     // always adding your module in conf
     'datatable',
     'template',
     'category', 
     'item',
-    'user'
+    'user',
+    'charts'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/user/login');
@@ -67,4 +69,5 @@ angular
   angular.module('datatable', ['personnalExpenseApp']);
   angular.module('template', ['personnalExpenseApp']);
   angular.module('category', ['personnalExpenseApp']);
+  angular.module('charts', ['personnalExpenseApp']);
 

@@ -34,7 +34,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <a ng-hide="nav.UserService.user.token" class="navbar-brand"  ui-sref="home">Personnal Expense</a>
-      <a ng-show="nav.UserService.user.token" class="navbar-brand"  ui-sref="home">Hello {{nav.UserService.user.username}}</a>
+      <a ng-show="nav.UserService.user.token" class="navbar-brand"  ui-sref="charts">Hello {{nav.UserService.user.username}}</a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
@@ -94,6 +94,10 @@
     <script src="bower_components/angular-bootstrap-datepicker/angular-bootstrap-datepicker.js"></script>
     <script src="bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>
     <script src="bower_components/ngprogress/build/ngprogress.min.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/angular-charts/dist/angular-charts.js"></script>
+    <script src="bower_components/chart.js/dist/Chart.js"></script>
+    <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -131,6 +135,10 @@
         <script src="modules/datatable/controller/datatable.js"></script>
         <script src="modules/datatable/controller/datatable.form.js"></script>
         <script src="modules/datatable/factory/datatable.factory.js"></script>
+        <!-- module charts -->
+        <script src="modules/charts/config/charts.route.js"></script>
+        <script src="modules/charts/controller/charts.js"></script>
+        <script src="modules/charts/factory/charts.factory.js"></script>
         <!-- endbuild -->
 </body>
 </html>
