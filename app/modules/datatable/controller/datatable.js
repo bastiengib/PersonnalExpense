@@ -14,10 +14,20 @@ angular.module('datatable')
       this.data = DatatableResolve;
       this.categories = CategoryResolve;
       this.factory = DatatableFactory;
+      this.data = this.orderBy(this.data, 'date');
     }
 
     Datatable.prototype = Object.create(ItemManager.__proto__);
     Datatable.constructor = Datatable;
+
+    Datatable.prototype.orderBy = function (table, $key) {
+      var ret = []
+      if ($key === 'date')
+        ret = _.sortBy(table, function (obj) {
+          return obj.date;
+        });
+      return ret
+    }
 
     Datatable.prototype.getCategory = function(id) {
       var object = _.find(this.categories, function(item){
