@@ -29,7 +29,7 @@ angular
     'user',
     'charts'
   ])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, ChartJsProvider) {
     $urlRouterProvider.otherwise('/user/login');
     $stateProvider
     .state(
@@ -40,6 +40,12 @@ angular
           controllerAs: 'main',
       }
     );
+    // Configure all colors
+    ChartJsProvider.setOptions({ 
+      colors : [ '#803690', '#00ADF9', '#DCDCDC', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
+      responsive: true,
+      showLines: true
+    });
   }).run(function($state, $rootScope, ngProgressFactory) {
     // on insctancie la progressbar
     $rootScope.progressbar = ngProgressFactory.createInstance();
