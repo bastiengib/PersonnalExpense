@@ -22,6 +22,7 @@ angular
     'ngProgress',
     'chart.js',
     // always adding your module in conf
+    'a1b4Datepicker',
     'datatable',
     'template',
     'category', 
@@ -70,6 +71,7 @@ angular
   });
   
   // define your modules here, don't forget to use global conf ['personnalExpenseApp']
+  angular.module('a1b4Datepicker', ['personnalExpenseApp']);
   angular.module('item', ['personnalExpenseApp']);
   angular.module('user', ['personnalExpenseApp']);
   angular.module('datatable', ['personnalExpenseApp']);
