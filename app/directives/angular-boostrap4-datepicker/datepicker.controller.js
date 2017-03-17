@@ -40,7 +40,13 @@ angular.module('a1b4Datepicker')
     }
 
     Datepicker.prototype.set = function(date) {
+        var reload = false;
+        if (moment($scope.source).month() !== date.month()) {
+            reload = true;
+        }
         $scope.source = new Date(date.format("YYYY-MM-DD"));
+        if (reload)
+            this.reload();
     }
 
     Datepicker.prototype.isTheDate = function(day) {
