@@ -46,13 +46,18 @@
                                     'btn-outline-primary': !ctrl.isTheDate(day.data) && ctrl.isTheMonth(day.data),
                                     'btn-outline-secondary': !ctrl.isTheMonth(day.data),}" 
                                     ng-click="ctrl.set(day.data)" style="border: none;"
-                                    data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">{{day.display | numberFixedLen:2}}</span>
+                                    data-dismiss="modal">
+                                    <span>{{day.display | numberFixedLen:2}}</span>
                                 </button>
                             </td>
                         </tr>
                     </table>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
             </div>
         </div>
     </div>
