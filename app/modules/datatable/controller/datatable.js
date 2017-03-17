@@ -51,9 +51,12 @@ angular.module('datatable')
       });
 
       bootbox.confirm({
-          title: expense.name,
-          message: "<p>"+expense.amount+"</p><p>"+$filter('date')(expense.date)+"</p><p>"+this.getCategory(expense.category)+"</p>",
-          size: 'small',
+          title: "Details",
+          message: '<strong class="col-4">Name : </strong><div class="pull-right">'+expense.name+'</div><hr />'+
+            '<strong class="col-4">Amount : </strong><div class="pull-right">'+$filter('amount')(expense.amount)+' €</div><hr />'+
+            '<strong class="col-4">Date : </strong><div class="pull-right">'+$filter('date')(expense.date)+'</div><hr />'+
+            '<strong class="col-4">Category : </strong><div class="pull-right">'+this.getCategory(expense.category)+'</div>',
+          size: 'medium',
           buttons: {
               confirm: {
                   label: '<i class="fa fa-ban"></i>',

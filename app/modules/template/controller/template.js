@@ -36,14 +36,16 @@ angular.module('template')
     }
 
     Template.prototype.modal = function($id) {
-      var expense = _.find(this.data, function(obj) {
+      var template = _.find(this.data, function(obj) {
         return obj._id === $id;
       });
 
       bootbox.confirm({
-          title: expense.name,
-          message: "<p>"+expense.amount+"</p><p>"+$filter('date')(expense.date)+"</p><p>"+this.getCategory(expense.category)+"</p>",
-          size: 'small',
+          title: "Details",
+          message: '<strong class="col-4">Name : </strong><div class="pull-right">'+template.name+'</div><hr />'+
+            '<strong class="col-4">Amount : </strong><div class="pull-right">'+$filter('amount')(template.amount)+' €</div><hr />'+
+            '<strong class="col-4">Category : </strong><div class="pull-right">'+this.getCategory(template.category)+'</div>',
+          size: 'medium',
           buttons: {
               confirm: {
                   label: '<i class="fa fa-ban"></i>',
