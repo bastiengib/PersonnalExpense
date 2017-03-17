@@ -27,30 +27,32 @@
                 </div>
                 <h4 class="modal-title" id="modalLabel">{{source | date}}</h4>
             </div>
-            <div class="modal-footer justify-content-md-center">
-                <table>
-                    <tr>
-                        <td class="text-center">Sun</td>
-                        <td class="text-center">Mon</td>
-                        <td class="text-center">Tue</td>
-                        <td class="text-center">Wed</td>
-                        <td class="text-center">Thu</td>
-                        <td class="text-center">Fri</td>
-                        <td class="text-center">Sat</td>
-                    </tr>
-                    <tr ng-repeat="week in ctrl.table">
-                        <td ng-repeat="day in week">
-                            <button type="button" class="btn" 
-                                ng-class="{'btn-primary': ctrl.isTheDate(day.data),
-                                'btn-outline-primary': !ctrl.isTheDate(day.data) && ctrl.isTheMonth(day.data),
-                                'btn-outline-secondary': !ctrl.isTheMonth(day.data),}" 
-                                ng-click="ctrl.set(day.data)"
-                                data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">{{day.display | numberFixedLen:2}}</span>
-                            </button>
-                        </td>
-                    </tr>
-                </table>
+            <div class="modal-body">
+                <div class="justify-content-md-center">
+                    <table>
+                        <tr>
+                            <td class="text-center">Sun</td>
+                            <td class="text-center">Mon</td>
+                            <td class="text-center">Tue</td>
+                            <td class="text-center">Wed</td>
+                            <td class="text-center">Thu</td>
+                            <td class="text-center">Fri</td>
+                            <td class="text-center">Sat</td>
+                        </tr>
+                        <tr ng-repeat="week in ctrl.table">
+                            <td ng-repeat="day in week">
+                                <button type="button" class="btn" 
+                                    ng-class="{'btn-primary': ctrl.isTheDate(day.data),
+                                    'btn-outline-primary': !ctrl.isTheDate(day.data) && ctrl.isTheMonth(day.data),
+                                    'btn-outline-secondary': !ctrl.isTheMonth(day.data),}" 
+                                    ng-click="ctrl.set(day.data)" style="border: none;"
+                                    data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">{{day.display | numberFixedLen:2}}</span>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
