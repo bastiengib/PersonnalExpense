@@ -45,8 +45,7 @@
                                     ng-class="{'btn-primary': ctrl.isTheDate(day.data),
                                     'btn-outline-primary': !ctrl.isTheDate(day.data) && ctrl.isTheMonth(day.data),
                                     'btn-outline-secondary': !ctrl.isTheMonth(day.data),}" 
-                                    ng-click="ctrl.set(day.data)" style="border: none;"
-                                    data-dismiss="modal">
+                                    ng-click="ctrl.set(day.data)" style="border: none;">
                                     <span>{{day.display | numberFixedLen:2}}</span>
                                 </button>
                             </td>
