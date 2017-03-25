@@ -49,6 +49,11 @@ angular.module('a1b4Datepicker')
             this.reload();
     }
 
+    Datepicker.prototype.inc = function ($i, $type) {
+        $scope.source = new Date(moment($scope.source).add($i, $type).format("YYYY-MM-DD"));
+        this.reload();
+    }
+
     Datepicker.prototype.isTheDate = function(day) {
         var compare = moment($scope.source).startOf('day');
         return compare.diff(day.startOf('day')) === 0;

@@ -1,24 +1,89 @@
-
-<ul class="list-group" style="padding-bottom: 66px;">
-  <a class="list-group-item list-group-item-action flex-column align-items-start" ng-repeat="exp in datatable.data" ng-click="datatable.modal(exp._id)">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1" ng-style="{'color': datatable.getCategoryColor(exp.category)}">
-        € {{::exp.amount | amount}}</h5>
-      <small class="text-muted"><span ng-if="exp.template" class="badge badge-info badge-pill" style="margin-right:10px;">&nbsp;</span>{{::exp.date | date}}</small>
+<div class="card" style="margin-bottom: 66px; margin-top: 124px;">
+  <ul class="list-group list-group-flush">
+    <a class="list-group-item list-group-item-action flex-column align-items-start" ng-repeat="exp in datatable.data" ng-click="datatable.modal(exp._id)">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1" ng-style="{'color': datatable.getCategoryColor(exp.category)}">
+          € {{::exp.amount | amount}}</h5>
+        <small class="text-muted"><span ng-if="exp.template" class="badge badge-info badge-pill" style="margin-right:10px;">&nbsp;</span>{{::exp.date | date}}</small>
+      </div>
+      <div class="d-flex w-100 justify-content-between">
+        <p class="mb-1 text-muted">
+          {{::exp.name}}
+        </p>
+        <span class="btn btn-sm btn-outline-primary" ng-click="datatable.update($event, exp._id)">
+          <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
+        </span>
+      </div>
+    </a>
+  </ul>
+</div>
+<!-- Pagination -->
+<nav class="navbar navbar-light bg-faded fixed-top" class="navbar navbar-light" style="background-color: #fff;margin-top:54px; z-index: 999;">
+  <div class="container hidden-sm-down">
+    <button type="button" class="btn btn-outline-secondary no-border text-muted dropdown-toggle dropdown-toggle-split" 
+      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{datatable.service.limit}}
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item">Action</a>
+      <a class="dropdown-item">Another action</a>
+      <a class="dropdown-item">Something else here</a>
     </div>
-    <div class="d-flex w-100 justify-content-between">
-      <p class="mb-1">
-        {{::exp.name}}
-      </p>
-      <span class="btn btn-sm btn-outline-primary" ng-click="datatable.update($event, exp._id)">
-        <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
-      </span>
+    <span class="navbar-brand text-primary" style="margin-right: 0px;">Page {{datatable.service.page + 1}}</span>
+    <span class="nav-item active text-muted">of {{datatable.service.getNbOfPages()}}</span>
+    <div class="pull-right">
+      <div class="btn-group pull-right" role="group" aria-label="First group">
+        <button type="button" class="btn no-border" ng-class="{'btn-outline-info': !datatable.service.isTheFirstPage(), 'btn-outline-secondary': datatable.service.isTheFirstPage()}" 
+          ng-click="datatable.service.setPage(0)" ng-disabled="datatable.service.isTheFirstPage()">
+          <i class="fa fa-fast-backward" aria-hidden="true"></i></button>
+        <button type="button" class="btn no-border" ng-class="{'btn-outline-info': !datatable.service.isTheFirstPage(), 'btn-outline-secondary': datatable.service.isTheFirstPage()}" 
+          ng-click="datatable.service.incPage(-1)" ng-disabled="datatable.service.isTheFirstPage()">
+          <i class="fa fa-backward" aria-hidden="true"></i></button>
+        <button type="button" class="btn no-border" ng-class="{'btn-outline-info': !datatable.service.isTheLastPage(), 'btn-outline-secondary': datatable.service.isTheLastPage()}" 
+          ng-click="datatable.service.incPage(1)" ng-disabled="datatable.service.isTheLastPage()">
+          <i class="fa fa-forward" aria-hidden="true"></i></button>
+        <button type="button" class="btn no-border" ng-class="{'btn-outline-info': !datatable.service.isTheLastPage(), 'btn-outline-secondary': datatable.service.isTheLastPage()}" 
+          ng-click="datatable.service.setPage(datatable.service.getNbOfPages()-1)" ng-disabled="datatable.service.isTheLastPage()">
+          <i class="fa fa-fast-forward" aria-hidden="true"></i></button>
+      </div>    
     </div>
-  </a>
-</ul>
+  </div>
+  <div class="hidden-md-up">
+    <button type="button" class="btn btn-outline-secondary no-border text-muted dropdown-toggle dropdown-toggle-split" 
+      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{datatable.service.limit}}
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" ng-click="datatable.service.changeLimit( 5)" ng-hide="datatable.service.isTheLimit(5)">5</a>
+      <a class="dropdown-item" ng-click="datatable.service.changeLimit(10)" ng-hide="datatable.service.isTheLimit(10)">10</a>
+      <a class="dropdown-item" ng-click="datatable.service.changeLimit(20)" ng-hide="datatable.service.isTheLimit(20)">20</a>
+    </div>
+    <span class="navbar-brand text-primary" style="margin-right: 0px;">Page {{datatable.service.page + 1}}</span>
+    <span class="nav-item active text-muted">of {{datatable.service.getNbOfPages()}}</span>
+    <div class="pull-right">
+      <div class="btn-group pull-right" role="group" aria-label="First group">
+        <button type="button" class="btn no-border" ng-class="{'btn-outline-info': !datatable.service.isTheFirstPage(), 'btn-outline-secondary': datatable.service.isTheFirstPage()}" 
+          ng-click="datatable.service.setPage(0)" ng-disabled="datatable.service.isTheFirstPage()">
+          <i class="fa fa-fast-backward" aria-hidden="true"></i></button>
+        <button type="button" class="btn no-border" ng-class="{'btn-outline-info': !datatable.service.isTheFirstPage(), 'btn-outline-secondary': datatable.service.isTheFirstPage()}" 
+          ng-click="datatable.service.incPage(-1)" ng-disabled="datatable.service.isTheFirstPage()">
+          <i class="fa fa-backward" aria-hidden="true"></i></button>
+        <button type="button" class="btn no-border" ng-class="{'btn-outline-info': !datatable.service.isTheLastPage(), 'btn-outline-secondary': datatable.service.isTheLastPage()}" 
+          ng-click="datatable.service.incPage(1)" ng-disabled="datatable.service.isTheLastPage()">
+          <i class="fa fa-forward" aria-hidden="true"></i></button>
+        <button type="button" class="btn no-border" ng-class="{'btn-outline-info': !datatable.service.isTheLastPage(), 'btn-outline-secondary': datatable.service.isTheLastPage()}" 
+          ng-click="datatable.service.setPage(datatable.service.getNbOfPages()-1)" ng-disabled="datatable.service.isTheLastPage()">
+          <i class="fa fa-fast-forward" aria-hidden="true"></i></button>
+      </div>  
+    </div>
+  </div>
+</nav>
+<!-- End Pagination -->
 <nav class="navbar navbar-light fixed-bottom bg-faded">
     <form class="form-inline">
-        <a class="navbar-brand" >List of Expenses</a>
+        <span class="navbar-brand text-primary" >List of Expenses</span>
         <button class="btn btn-outline-primary navbar-toggler-right" ui-sref="datatable.add"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
     </form>
 </nav>

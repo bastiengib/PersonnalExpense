@@ -29,28 +29,28 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <nav ng-controller="NavbarCtrl as nav" class="navbar navbar-toggleable-md navbar-light fixed-top bg-faded">
+    <nav ng-controller="NavbarCtrl as nav" class="navbar navbar-inverse bg-inverse navbar-toggleable-md navbar-light fixed-top">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" ng-click="collapse = !collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a ng-hide="nav.UserService.user.token" class="navbar-brand"  ui-sref="home">Personnal Expense</a>
-      <a ng-cloak ng-show="nav.UserService.user.token" class="navbar-brand"  ui-sref="charts">Hello {{nav.UserService.user.username}}</a>
+      <a ng-cloak ng-hide="nav.UserService.user.token" class="navbar-brand text-info"  ui-sref="home">Personnal Expense</a>
+      <a ng-cloak ng-show="nav.UserService.user.token" class="navbar-brand text-info"  ui-sref="charts">Hello {{nav.UserService.user.username}}</a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" ui-sref="datatable.list">Datatable</a>
+            <a class="text-info nav-link" ui-sref="datatable.list">Datatable</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" ui-sref="template.list">Templates</a>
+            <a class="text-info nav-link" ui-sref="template.list">Templates</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" ui-sref="category.list">Categories</a>
+            <a class="text-info nav-link" ui-sref="category.list">Categories</a>
           </li>
           <li ng-show="nav.UserService.user.token" class="nav-item active">
-            <a class="nav-link"  ui-sref="user.update">Account</a>
+            <a class="text-muted nav-link"  ui-sref="user.update">Account</a>
           </li>
           <li ng-show="nav.UserService.user.token" class="nav-item active" style="cursor: pointer;">
-            <a class="nav-link" ng-click="nav.UserService.disconnect()">Disconnect</a>
+            <a class="text-muted nav-link" ng-click="nav.UserService.disconnect()">Disconnect</a>
           </li>
         </ul>
       </div>
@@ -114,7 +114,7 @@
         <script src="modules/main/controller/main.js"></script>
         <script src="modules/main/controller/navbar.js"></script>
 
-        <!-- module datatable -->
+        <!-- module user -->
         <script src="modules/user/config/user.route.js"></script>
         <script src="modules/user/controller/user.js"></script>
         <script src="modules/user/service/user.service.js"></script>
@@ -130,6 +130,7 @@
         <script src="modules/template/factory/template.factory.js"></script>
         <!-- module datatable -->
         <script src="modules/datatable/config/datatable.route.js"></script>
+        <script src="modules/datatable/service/datatable.service.js"></script>
         <script src="modules/datatable/controller/datatable.js"></script>
         <script src="modules/datatable/controller/datatable.form.js"></script>
         <script src="modules/datatable/factory/datatable.factory.js"></script>

@@ -4,7 +4,7 @@ function DatatableFactory($resource, APIURL) {
             id: '@id'
         },
         {
-            'getAll': {method: 'GET', isArray:true},
+            'getAll': {method: 'GET'},
             'update': {method: 'PUT'}
         }
     );

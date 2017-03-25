@@ -30,7 +30,7 @@ angular.module('user')
             return datas;
         }, function (error) {
             if (error.status = 401) {
-                Notification.error({ message: error.data.message, title: 'Not Connected' });
+                Notification.error({ message: error.data.message, title: 'Not Connected', positionY: 'bottom', positionX: 'left' });
                 return $q.reject({ authenticated: false });
             }
         }.bind(this));
@@ -50,10 +50,10 @@ angular.module('user')
         this.factory.connect({verb: 'connect'}, params, function (user) {
             this.user = user.item;
             $cookies.putObject('PersonnalExpense', this.user);
-            Notification.info({ title: 'Connected', message: 'Hello '+this.user.username });
+            Notification.info({ title: 'Connected', message: 'Hello '+this.user.username, positionY: 'bottom', positionX: 'left' });
             $state.go('charts');
         }.bind(this), function (error) {
-            Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')' });
+            Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')', positionY: 'bottom', positionX: 'left' });
         }.bind(this));
     }
 
@@ -69,7 +69,7 @@ angular.module('user')
             this.user = user.item;
             $state.go('user.login');
         }.bind(this), function (error) {
-            Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')' });
+            Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')', positionY: 'bottom', positionX: 'left', positionY: 'bottom', positionX: 'left' });
         }.bind(this));
     }
 

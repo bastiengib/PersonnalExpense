@@ -1,14 +1,14 @@
 <form name="datatableForm" class="align-self-center">
   <div class="form-group row">
     <div class="input-group col-12">
-        <span class="input-group-addon col-4">Name</span>
+        <span class="input-group-addon col-4 bg-info text-white">Name</span>
         <input class="form-control col-8" type="text" id="name" ng-model="datatable.data.name" required />
     </div>
   </div>
   <div class="form-group row">
     <div class="input-group col-12">
-        <span class="input-group-addon col-4">Amount</span>
-        <input class="form-control col-8" patttern="datatable.AMOUNT" type="number" id="amount" step="0.01" ng-model="datatable.data.amount" required />
+        <span class="input-group-addon col-4 bg-info text-white">Amount</span>
+        <input class="form-control col-8" type="number" id="amount" step="0.01" ng-model="datatable.data.amount" required />
     </div>
   </div>
   <div class="form-group row">
@@ -18,7 +18,7 @@
   </div>
   <div class="form-group row">
     <div class="input-group col-12">
-        <span class="input-group-addon col-4">Category</span>
+        <span class="input-group-addon col-4 bg-info text-white">Category</span>
         <select class="form-control col-8" id="category" ng-model="datatable.data.category"
             ng-options="item._id as item.name for item in datatable.categories" required>
         </select>
@@ -28,8 +28,8 @@
 
 <nav class="navbar navbar-light fixed-bottom bg-faded">
     <form class="form-inline">
-        <a class="navbar-brand" ng-if="!datatable.data._id">Create new Expense</a>
-        <a class="navbar-brand" ng-if="datatable.data._id">Update Expense</a>
+        <span class="navbar-brand text-primary" ng-if="!datatable.data._id">Create new Expense</span>
+        <span class="navbar-brand text-primary" ng-if="datatable.data._id">Update Expense</span>
         <div class="btn-group" >
             <button type="button" class="btn btn-outline-info" ui-sref="datatable.list" tooltip-placement="top" uib-tooltip="Go to the list">
                 <i class="fa fa-list-ul" aria-hidden="true"></i>
@@ -37,11 +37,11 @@
             <button type="button" class="btn btn-outline-primary" ng-if="datatable.data._id" ng-click="datatable.update(datatable.factory, datatable.data, 'datatable.list')" ng-disabled="!datatableForm.$valid">
                 <span class="fa fa-check" aria-hidden="true"></span>
             </button>
-            <button type="button" class="btn btn-outline-success" ng-if="!datatable.data._id" ng-click="datatable.create(datatable.factory, datatable.data, 'datatable.list')"  ng-disabled="!datatableForm.$valid">
+            <button type="button" class="btn btn-outline-primary" ng-if="!datatable.data._id" ng-click="datatable.create(datatable.factory, datatable.data, 'datatable.list')"  ng-disabled="!datatableForm.$valid">
                 <span class="fa fa-check" aria-hidden="true"></span>
             </button>
         </div>
-        <button type="button" class="btn btn-outline-danger navbar-toggler-right" ng-if="datatable.data._id" ng-click="datatable.delete(datatable.factory, datatable.data._id, 'datatable.list')" >
+        <button type="button" class="btn btn-outline-secondary navbar-toggler-right" ng-if="datatable.data._id" ng-click="datatable.delete(datatable.factory, datatable.data._id, 'datatable.list')" >
             <span class="fa fa-ban" aria-hidden="true"></span>
         </button>
     </form>

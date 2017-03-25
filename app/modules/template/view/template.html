@@ -9,7 +9,7 @@
         {{::tpl.name}}
       </p>
       <span>
-      <span class="btn btn-sm btn-outline-success" ng-click="template.use($event, tpl._id)">
+      <span class="btn btn-sm btn-outline-info" ng-click="template.use($event, tpl._id)">
         <span class="fa fa-clipboard" aria-hidden="true"></span>
       </span>
       <span class="btn btn-sm btn-outline-primary" ng-click="template.update($event, tpl._id)">
@@ -35,7 +35,7 @@
       </div>
     </form>
     <form class="form-inline" ng-click="template.closeUse()">
-        <a class="navbar-brand" >List of Templates</a>
+        <a class="navbar-brand text-primary" >List of Templates</a>
         <button class="btn btn-outline-danger" ng-click="template.closeUse()" ng-show="template.apply"><i class="fa fa-ban" aria-hidden="true"></i></button>
         <button class="btn btn-outline-primary navbar-toggler-right" ui-sref="template.add"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
     </form>

@@ -18,10 +18,13 @@ angular.module('datatable')
             templateUrl: 'modules/datatable/view/datatable.html',
             controller: 'DatatableCtrl as datatable',
             resolve: {
-                DatatableResolve: function ($stateParams, $state, DatatableFactory, UserService) {
+                DatatableResolve: function ($stateParams, $state, DatatableFactory, UserService, DatatableService) {
                     var params = {
                         'token': UserService.user.token,
-                        'user': UserService.user._id
+                        'user': UserService.user._id,
+                        'o' : DatatableService.page * DatatableService.limit,
+                        'l' : DatatableService.limit,
+                        's' : DatatableService.sort
                     };
                     return DatatableFactory.getAll(params).$promise;
                 },

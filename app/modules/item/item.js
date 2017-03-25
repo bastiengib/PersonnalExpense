@@ -23,11 +23,11 @@ angular.module('item')
             if (reload) {
                 _this.data.push(itemCreated.item);
             }
-            Notification.success({ message: 'the item was succesfully saved :)', title: 'Success' });
+            Notification.primary({ message: 'the item was succesfully saved :)', title: 'Success', positionY: 'bottom', positionX: 'left' });
             if (redirectLocation)
                 $state.go(redirectLocation);
         }.bind(this), function (error) {
-            Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')' });
+            Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')', positionY: 'bottom', positionX: 'left' });
             if (error.status = 401) {
                 return $q.reject({ authenticated: false });
             }
@@ -41,11 +41,11 @@ angular.module('item')
             'id': item._id
         };
         this.factory.update(params, item, function (item) {
-            Notification.success({ message: 'the item was succesfully updated :)', title: 'Success' });
+            Notification.primary({ message: 'the item was succesfully updated :)', title: 'Success', positionY: 'bottom', positionX: 'left' });
             if (redirectLocation)
                 $state.go(redirectLocation);
         }.bind(this), function (error) {
-            Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')' });
+            Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')', positionY: 'bottom', positionX: 'left' });
             if (error.status = 401) {
                 return $q.reject({ authenticated: false });
             }
@@ -67,11 +67,11 @@ angular.module('item')
                             return obj._id === itemID;
                         });
                     }
-                    Notification.warning({ message: 'the item was succesfully deleted :)', title: 'Success' });
+                    Notification.info({ message: 'the item was succesfully deleted :)', title: 'Success', positionY: 'bottom', positionX: 'left' });
                     if (redirectLocation)
                         $state.go(redirectLocation);
                 }.bind(this), function (error) {
-                    Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')' });
+                    Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')', positionY: 'bottom', positionX: 'left' });
                     if (error.status = 401) {
                         return $q.reject({ authenticated: false });
                     }

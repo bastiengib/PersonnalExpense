@@ -49,7 +49,7 @@ angular.module('template')
           buttons: {
               confirm: {
                   label: '<i class="fa fa-ban"></i>',
-                  className: 'btn-outline-danger pull-right'
+                  className: 'btn-outline-secondary pull-right'
               },
               cancel: {
                   label: '<i class="fa fa-close"></i>',
@@ -87,10 +87,10 @@ angular.module('template')
             'verb': 'apply'
         };
         TemplateFactory.apply(params, this.apply, function (itemCreated) {
-            Notification.success({ message: 'the template was succesfully applied :)', title: 'Success' });
+            Notification.primary({ message: 'the template was succesfully applied :)', title: 'Success', positionY: 'bottom', positionX: 'left' });
             this.apply = null;
         }.bind(this), function (error) {
-            Notification.error({ message: error.status + ' - ' + error.statusText, title: 'Error (' + error.status + ')' });
+            Notification.error({ message: error.status + ' - ' + error.statusText, title: 'Error (' + error.status + ')', positionY: 'bottom', positionX: 'left' });
         }.bind(this));
     }
 

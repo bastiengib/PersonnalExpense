@@ -7,14 +7,16 @@
  * @description Lead the datatable list
  */
 angular.module('datatable')
-  .controller('DatatableCtrl', function ($state, $filter, DatatableFactory, ItemManager, DatatableResolve, CategoryResolve, UserService) {
+  .controller('DatatableCtrl', function ($state, $filter, DatatableFactory, ItemManager, DatatableResolve, CategoryResolve, UserService, DatatableService) {
 
     function Datatable() {
       UserService.resolveReceived = false;
-      this.data = DatatableResolve;
+      this.data = DatatableResolve.expenses;
       this.categories = CategoryResolve;
       this.factory = DatatableFactory;
-      this.data = this.orderBy(this.data, 'date');
+      this.data = this.data;
+      this.service = DatatableService;
+      this.service.count = DatatableResolve.count;
     }
 
     Datatable.prototype = Object.create(ItemManager.__proto__);
@@ -60,7 +62,7 @@ angular.module('datatable')
           buttons: {
               confirm: {
                   label: '<i class="fa fa-ban"></i>',
-                  className: 'btn-outline-danger pull-right'
+                  className: 'btn-outline-secondary pull-right'
               },
               cancel: {
                   label: '<i class="fa fa-close"></i>',
