@@ -26,9 +26,9 @@
       <span class="sr-only">Toggle Dropdown</span>
     </button>
     <div class="dropdown-menu">
-      <a class="dropdown-item">Action</a>
-      <a class="dropdown-item">Another action</a>
-      <a class="dropdown-item">Something else here</a>
+      <a class="dropdown-item" ng-click="datatable.service.changeLimit( 5)" ng-hide="datatable.service.isTheLimit(5)">5</a>
+      <a class="dropdown-item" ng-click="datatable.service.changeLimit(10)" ng-hide="datatable.service.isTheLimit(10)">10</a>
+      <a class="dropdown-item" ng-click="datatable.service.changeLimit(20)" ng-hide="datatable.service.isTheLimit(20)">20</a>
     </div>
     <span class="navbar-brand text-primary" style="margin-right: 0px;">Page {{datatable.service.page + 1}}</span>
     <span class="nav-item active text-muted">of {{datatable.service.getNbOfPages()}}</span>

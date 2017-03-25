@@ -17,7 +17,7 @@ angular.module('datatable')
     }
 
     Service.prototype.getNbOfPages = function () {
-        var euclidean = this.count / this.limit;
+        var euclidean = parseInt(this.count / this.limit, 10);
         var rest = this.count % this.limit;
          rest > 0 ? euclidean += 1 : null;
         return euclidean;
