@@ -23,7 +23,6 @@
     <button type="button" class="btn btn-outline-secondary no-border text-muted dropdown-toggle dropdown-toggle-split" 
       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       {{datatable.service.limit}}
-      <span class="sr-only">Toggle Dropdown</span>
     </button>
     <div class="dropdown-menu">
       <a class="dropdown-item" ng-click="datatable.service.changeLimit( 5)" ng-hide="datatable.service.isTheLimit(5)">5</a>
@@ -53,16 +52,15 @@
     <button type="button" class="btn btn-outline-secondary no-border text-muted dropdown-toggle dropdown-toggle-split" 
       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       {{datatable.service.limit}}
-      <span class="sr-only">Toggle Dropdown</span>
     </button>
     <div class="dropdown-menu">
       <a class="dropdown-item" ng-click="datatable.service.changeLimit( 5)" ng-hide="datatable.service.isTheLimit(5)">5</a>
       <a class="dropdown-item" ng-click="datatable.service.changeLimit(10)" ng-hide="datatable.service.isTheLimit(10)">10</a>
       <a class="dropdown-item" ng-click="datatable.service.changeLimit(20)" ng-hide="datatable.service.isTheLimit(20)">20</a>
     </div>
-    <span class="navbar-brand text-primary" style="margin-right: 0px;">Page {{datatable.service.page + 1}}</span>
+    <span class="navbar-brand text-primary" style="margin-right: 0px;"><span class="hidden-xs-down">Page </span>{{datatable.service.page + 1}}</span>
     <span class="nav-item active text-muted">of {{datatable.service.getNbOfPages()}}</span>
-    <div class="pull-right">
+    <div class="pull-right align-middle">
       <div class="btn-group pull-right" role="group" aria-label="First group">
         <button type="button" class="btn no-border" ng-class="{'btn-outline-info': !datatable.service.isTheFirstPage(), 'btn-outline-secondary': datatable.service.isTheFirstPage()}" 
           ng-click="datatable.service.setPage(0)" ng-disabled="datatable.service.isTheFirstPage()">
