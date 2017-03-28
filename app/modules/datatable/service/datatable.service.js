@@ -7,13 +7,35 @@
  * @description Lead the user list
  */
 angular.module('datatable')
-  .service('DatatableService', function ($state) {
+  .service('DatatableService', function ($state, UserService, DatatableFactory) {
 
     function Service() {
         this.page = 0;
         this.limit = 10;
         this.sort = -1;
         this.count = 0;
+
+        this.csvHeader = ['Code', 'Name', 'Amount', 'Date', 'Category'];
+        this.fieldSeparator = ";";
+        this.decimalSeparator = ",";
+        this.csvName = "pers-expense_";
+        this.csvFileType=".csv";
+
+    }
+
+    Service.prototype.getCsvName = function () {
+      var date = moment().format('YYYY_MM_DD_HHmm');
+      var user = UserService.user.username;
+      return this.csvName + date + "_" + user + this.csvFileType;
+    }
+
+    Service.prototype.getCsv = function () {
+      var params = {
+          'token': UserService.user.token,
+          'user': UserService.user._id,
+          'verb': 'export'
+      };
+      return DatatableFactory.export(params).$promise;
     }
 
     Service.prototype.getNbOfPages = function () {

@@ -21,6 +21,7 @@ angular
     'colorpicker.module',
     'ngProgress',
     'chart.js',
+    'ngCsv',
     // always adding your module in conf
     'a1b4Datepicker',
     'datatable',

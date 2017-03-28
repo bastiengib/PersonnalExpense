@@ -16,13 +16,13 @@ angular.module('charts')
         return obj._id;
       });
       this.load(ChartsResolve);
-      $scope.labels2 = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+      /*$scope.labels2 = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
       $scope.series2 = ['Series A', 'Series B'];
 
       $scope.data2 = [
         [65, 59, 80, 81, 56, 55, 40],
         [28, 48, 40, 19, 86, 27, 90]
-      ];
+      ];*/
     }
 
     Charts.prototype.load = function ($resolve) {
@@ -30,6 +30,7 @@ angular.module('charts')
         this.data = _.sortBy($resolve, function (obj){
           return obj._id;
         });
+
         var filteredCategories = _.filter(this.categories, function(obj) {
           return _.find(this.data, function(itm) {
             return itm._id === obj._id;
@@ -38,10 +39,10 @@ angular.module('charts')
         filteredCategories = _.sortBy(filteredCategories, function (obj){
           return obj._id;
         });
+
         this.labels = _.map(filteredCategories, function(obj) {
           return obj.name;
         });
-        
         this.data =  _.map(this.data, function(obj) {
           return Math.round(obj.sum*100)/100;
         });
