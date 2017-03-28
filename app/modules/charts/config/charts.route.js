@@ -14,9 +14,21 @@ angular.module('charts')
             templateUrl: 'modules/charts/view/charts.html',
             controller: 'ChartsCtrl as charts',
             resolve: {
-                ChartsResolve: function ($stateParams, $state, ChartsFactory) {
-                    //return ChartsFactory.getCharts().$promise;
-                    return null;
+                ChartsResolve: function ($stateParams, $state, ChartsFactory, UserService, ChartsService) {
+                     var params = {
+                        'token': UserService.user.token,
+                        'user': UserService.user._id,
+                        'verb': ChartsService.verb,
+                        'y': ChartsService.year,
+                        'm': ChartsService.month + 1 
+                    };
+                    return ChartsFactory.getCharts(params).$promise;
+                }, CategoryResolve: function ($stateParams, $state, CategoryFactory, UserService) {
+                    var params = {
+                        'token': UserService.user.token,
+                        'user': UserService.user._id
+                    };
+                    return CategoryFactory.getAll(params).$promise;
                 }
             }
         });

@@ -3,11 +3,19 @@
   <div class="col-xs-12 col-md-5">
     <div class="card">
       <div class="card-header bg-faded text-primary">
-        Demo
+        {{charts.service.displayByMonth()}}
+        <div class="btn-group pull-right">
+            <button type="button" class="btn btn-outline-info no-border" ng-click="charts.inc(-1)">
+                <i class="fa fa-caret-left" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-outline-info no-border" ng-click="charts.inc(1)">
+                <i class="fa fa-caret-right" aria-hidden="true"></i>
+            </button>
+        </div>
       </div>
       <div class="card-block">
         <canvas id="doughnut" class="chart chart-doughnut"
-          chart-data="data" chart-labels="labels">
+          chart-data="charts.data" chart-labels="charts.labels">
         </canvas> 
       </div>
     </div>
@@ -25,5 +33,3 @@
     </div>
   </div>
 </div>
-  
-<p>Coming soon !</p>

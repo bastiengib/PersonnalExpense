@@ -1,5 +1,5 @@
 function ChartsFactory($resource, APIURL) {
-    return $resource( APIURL + '/charts/:verb', {
+    return $resource( APIURL + '/chart/:verb', {
             verb: '@verb'
         },
         {
