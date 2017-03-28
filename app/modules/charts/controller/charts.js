@@ -28,14 +28,22 @@ angular.module('charts')
     Charts.prototype.load = function ($resolve) {
       if ($resolve.length > 0) {
         this.data = _.sortBy($resolve, function (obj){
-          return obj._id.category;
+          return obj._id;
         });
-        this.labels = _.map(this.categories, function(obj) {
+        var filteredCategories = _.filter(this.categories, function(obj) {
+          return _.find(this.data, function(itm) {
+            return itm._id === obj._id;
+          });
+        }.bind(this));
+        filteredCategories = _.sortBy(filteredCategories, function (obj){
+          return obj._id;
+        });
+        this.labels = _.map(filteredCategories, function(obj) {
           return obj.name;
         });
-        //$scope.data = [300, 500, 100];
+        
         this.data =  _.map(this.data, function(obj) {
-          return obj.sum;
+          return Math.round(obj.sum*100)/100;
         });
       } else {
         this.data = [1];
