@@ -29,6 +29,12 @@ angular.module('charts')
                         'user': UserService.user._id
                     };
                     return CategoryFactory.getAll(params).$promise;
+                }, auth: function ($stateParams, $state, UserFactory, UserService) {
+                    var params = {
+                        'token': UserService.user.token,
+                        'user': UserService.user._id
+                    };
+                    return UserService.isConnectedResolve($stateParams, $state, UserFactory.checkConnexion(params).$promise);
                 }
             }
         });

@@ -7,13 +7,14 @@
  * @description Lead the user list
  */
 angular.module('user')
-  .controller('UserCtrl', function ($state, $filter, UserFactory, ItemManager, UserService) {
+  .controller('UserCtrl', function ($scope, $filter, UserFactory, ItemManager, UserService, TranslationService) {
 
     function User() {
       this.factory = UserFactory;
       this.apply = null;
       this.service = UserService;
       this.data = {};
+      this.languages = TranslationService.languages;
     }
 
     User.prototype = Object.create(ItemManager.__proto__);

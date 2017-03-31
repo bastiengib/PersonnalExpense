@@ -1,6 +1,6 @@
 <!-- the control -->
 <div class="input-group">
-    <span class="input-group-addon col-4 bg-info text-white">Date</span>
+    <span class="input-group-addon col-4 bg-info text-white">{{'DATE' | translate:lang}}</span>
     <span class="input-group-addon col" style="background-color:#fff;">{{source | date}}</span>
     <span class="input-group-btn">
         <button class="btn bg-info text-white" type="button" data-toggle="modal" data-target="#flipFlop" ng-click="ctrl.reload()">
@@ -22,19 +22,19 @@
                         <i class="fa fa-caret-right" aria-hidden="true"></i>
                     </button>
                 </div>
-                <h4 class="modal-title text-muted" id="modalLabel">{{source | dateheader}}</h4>
+                <h4 class="modal-title text-muted" id="modalLabel">{{(source | dateheader) | translateMonth:ctrl.lang}}</h4>
             </div>
             <div class="modal-body align-self-center">
                 <div class="align-self-center">
                     <table>
                         <tr>
-                            <td class="text-center text-muted">Sun</td>
-                            <td class="text-center text-muted">Mon</td>
-                            <td class="text-center text-muted">Tue</td>
-                            <td class="text-center text-muted">Wed</td>
-                            <td class="text-center text-muted">Thu</td>
-                            <td class="text-center text-muted">Fri</td>
-                            <td class="text-center text-muted">Sat</td>
+                            <td class="text-center text-muted">{{'Mon' | translateDay:ctrl.lang}}</td>
+                            <td class="text-center text-muted">{{'Tue' | translateDay:ctrl.lang}}</td>
+                            <td class="text-center text-muted">{{'Wed' | translateDay:ctrl.lang}}</td>
+                            <td class="text-center text-muted">{{'Thu' | translateDay:ctrl.lang}}</td>
+                            <td class="text-center text-muted">{{'Fri' | translateDay:ctrl.lang}}</td>
+                            <td class="text-center text-muted">{{'Sat' | translateDay:ctrl.lang}}</td>
+                            <td class="text-center text-muted">{{'Sun' | translateDay:ctrl.lang}}</td>
                         </tr>
                         <tr ng-repeat="week in ctrl.table">
                             <td ng-repeat="day in week">
@@ -52,7 +52,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary no-border" data-dismiss="modal">
-                    Close
+                    {{'CLOSE' | translate:datatable.lang}}
                 </button>
             </div>
         </div>

@@ -7,10 +7,9 @@
  * @description Lead the datatable list
  */
 angular.module('datatable')
-  .controller('DatatableCtrl', function ($state, $filter, DatatableFactory, ItemManager, DatatableResolve, CategoryResolve, UserService, DatatableService) {
+  .controller('DatatableCtrl', function ($state, $filter, DatatableFactory, ItemManager, DatatableResolve, CategoryResolve, DatatableService) {
 
     function Datatable() {
-      UserService.resolveReceived = false;
       this.data = DatatableResolve.expenses;
       this.categories = CategoryResolve;
       this.factory = DatatableFactory;
@@ -53,11 +52,11 @@ angular.module('datatable')
       });
 
       bootbox.confirm({
-          title: "Details",
-          message: '<strong class="col-4">Name : </strong><div class="pull-right">'+expense.name+'</div><hr />'+
-            '<strong class="col-4">Amount : </strong><div class="pull-right">'+$filter('amount')(expense.amount)+' €</div><hr />'+
-            '<strong class="col-4">Date : </strong><div class="pull-right">'+$filter('date')(expense.date)+'</div><hr />'+
-            '<strong class="col-4">Category : </strong><div class="pull-right">'+this.getCategory(expense.category)+'</div>',
+          title: $filter('translate')('DETAILS'),
+          message: '<strong class="col-4">'+$filter('translate')('NAME')+' : </strong><div class="pull-right">'+expense.name+'</div><hr />'+
+            '<strong class="col-4">'+$filter('translate')('AMOUNT')+' : </strong><div class="pull-right">'+$filter('amount')(expense.amount)+' €</div><hr />'+
+            '<strong class="col-4">'+$filter('translate')('DATE')+' : </strong><div class="pull-right">'+$filter('date')(expense.date)+'</div><hr />'+
+            '<strong class="col-4">'+$filter('translate')('CATEGORY')+' : </strong><div class="pull-right">'+this.getCategory(expense.category)+'</div>',
           size: 'medium',
           buttons: {
               confirm: {

@@ -8,9 +8,10 @@
  * Controller of the personnalExpenseApp
  */
 angular.module('personnalExpenseApp')
-	.controller('NavbarCtrl', function (UserService) {
+	.controller('NavbarCtrl', function (UserService, TranslationService) {
 		function MainCtrlClass () {
-			this.UserService = UserService;  
+			this.UserService = UserService;
+			this.translation = TranslationService;
 		}
 		
 		return new MainCtrlClass();

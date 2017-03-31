@@ -22,6 +22,7 @@ angular
     'ngProgress',
     'chart.js',
     'ngCsv',
+    'TranslateModule',
     // always adding your module in conf
     'a1b4Datepicker',
     'datatable',
@@ -48,7 +49,10 @@ angular
       responsive: true,
       showLines: true
     });
-  }).run(function($state, $rootScope, ngProgressFactory) {
+  }).run(function($state, $rootScope, ngProgressFactory, $window, TranslationService) {
+    // $translationProvider
+    TranslationService.init();
+
     // on insctancie la progressbar
     $rootScope.progressbar = ngProgressFactory.createInstance();
     $rootScope.progressbar.setColor('#5491f2');
@@ -79,4 +83,5 @@ angular
   angular.module('template', ['personnalExpenseApp']);
   angular.module('category', ['personnalExpenseApp']);
   angular.module('charts', ['personnalExpenseApp']);
+  angular.module('TranslateModule', ['personnalExpenseApp']);
 

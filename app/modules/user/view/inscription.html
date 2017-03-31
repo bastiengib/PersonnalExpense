@@ -1,40 +1,40 @@
 <form name="userForm" class="align-self-center">
     <div class="jumbotron">
-        <h1 class="display-6">Create an account</h1>
+        <h1 class="display-6">{{'CREATE_ACCOUNT' | translate}}</h1>
         <hr class="my-4">
         <div class="form-group  row">
             <div class="input-group col-12">
-                <span class="input-group-addon col-4">First name</span>
+                <span class="input-group-addon col-4">{{'FIRSTNAME' | translate}}</span>
                 <input class="form-control col-8" type="text" id="firstname" ng-model="user.data.firstname" required />
             </div>
         </div>
         <div class="form-group  row">
             <div class="input-group col-12">
-                <span class="input-group-addon col-4">Last name</span>
+                <span class="input-group-addon col-4">{{'LASTNAME' | translate}}</span>
                 <input class="form-control col-8" type="text" id="lastname" ng-model="user.data.lastname" required/>
             </div>
         </div>
         <div class="form-group  row">
             <div class="input-group col-12">
-                <span class="input-group-addon col-4">Username</span>
+                <span class="input-group-addon col-4">{{'USERNAME' | translate}}</span>
                 <input class="form-control" type="text" id="username" ng-model="user.data.username" required />
             </div>
         </div>
         <div class="form-group  row">
             <div class="input-group col-12">
-                <span class="input-group-addon col-4">Password</span>
+                <span class="input-group-addon col-4">{{'PASSWORD' | translate}}</span>
                 <input class="form-control" type="password" id="password" ng-model="user.data.password" required />
             </div>
         </div>
         <hr class="my-4">
         <p class="lead">
            <button type="button" class="btn btn-success col-12" ng-disabled="!userForm.$valid" ng-click="user.create(user.factory, user.data, 'user.login')">
-                <span class="fa fa-user-plus" aria-hidden="true"></span> Create
+                <span class="fa fa-user-plus" aria-hidden="true"></span> {{'CREATE' | translate}}
             </button>
         </p>
         <p class="lead">
             <button class="btn btn-info col-12" ui-sref="user.login">
-                <span class="fa fa-undo" aria-hidden="true"></span> Back to login
+                <span class="fa fa-undo" aria-hidden="true"></span> {{'BACK_TO_LOGIN' | translate}}
             </button>
         </p>
     </div>

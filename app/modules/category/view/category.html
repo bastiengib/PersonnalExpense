@@ -1,8 +1,8 @@
 <table class="table">
   <thead class="thead-default">
     <tr>
-      <th class="align-middle text-primary">Name</th>
-      <th class="align-middle text-primary"><div class="pull-right">Action</div></th>
+      <th class="align-middle text-primary">{{'NAME' | translate}}</th>
+      <th class="align-middle text-primary"><div class="pull-right">{{'ACTION' | translate}}</div></th>
     </tr>
   </thead>
   <tbody>
@@ -11,7 +11,7 @@
         <th class="align-middle">
           <div class="input-group">
             <input class="form-control form-control-sm" type="text" id="name" ng-model="category.form.name" required />
-            <span class="input-group-addon bg-info text-white" id="basic-addon2">color</span>
+            <span class="input-group-addon bg-info text-white" id="basic-addon2">{{'COLOR' | translate}}</span>
             <input class="form-control form-control-sm col-2"colorpicker ng-model="category.form.color" type="text" ng-style="category.color(category.form.color)">
           </div>
         </th>
@@ -34,6 +34,6 @@
 </table>
 <nav class="navbar navbar-light fixed-bottom bg-faded">
     <form class="form-inline">
-        <a class="navbar-brand text-primary" >List of Categories</a>
+        <a class="navbar-brand text-primary" >{{'LIST_OF_CATEGORIES' | translate}}</a>
     </form>
 </nav>

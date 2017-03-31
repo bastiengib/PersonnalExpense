@@ -41,10 +41,10 @@ angular.module('template')
       });
 
       bootbox.confirm({
-          title: "Details",
-          message: '<strong class="col-4">Name : </strong><div class="pull-right">'+template.name+'</div><hr />'+
-            '<strong class="col-4">Amount : </strong><div class="pull-right">'+$filter('amount')(template.amount)+' €</div><hr />'+
-            '<strong class="col-4">Category : </strong><div class="pull-right">'+this.getCategory(template.category)+'</div>',
+          title: $filter('translate')('DETAILS'),
+          message: '<strong class="col-4">'+$filter('translate')('NAME')+' : </strong><div class="pull-right">'+template.name+'</div><hr />'+
+            '<strong class="col-4">'+$filter('translate')('AMOUNT')+' : </strong><div class="pull-right">'+$filter('amount')(template.amount)+' €</div><hr />'+
+            '<strong class="col-4">'+$filter('translate')('CATEGORY')+' : </strong><div class="pull-right">'+this.getCategory(template.category)+'</div>',
           size: 'medium',
           buttons: {
               confirm: {
@@ -87,10 +87,10 @@ angular.module('template')
             'verb': 'apply'
         };
         TemplateFactory.apply(params, this.apply, function (itemCreated) {
-            Notification.primary({ message: 'the template was succesfully applied :)', title: 'Success', positionY: 'bottom', positionX: 'left' });
+            Notification.primary({ message: $filter('translate')('TAPPLIED', this.lang), positionY: 'bottom', positionX: 'left' });
             this.apply = null;
         }.bind(this), function (error) {
-            Notification.error({ message: error.status + ' - ' + error.statusText, title: 'Error (' + error.status + ')', positionY: 'bottom', positionX: 'left' });
+            Notification.error({ message: $filter('translate')('ERROR', this.lang)+" : "+error.status + ' - ' + error.statusText, positionY: 'bottom', positionX: 'left' });
         }.bind(this));
     }
 

@@ -7,10 +7,10 @@
  * @description Lead CRUD function
  */
 angular.module('item')
-  .factory('ItemManager', function (Notification, $state, UserService) {
+  .factory('ItemManager', function (Notification, $state, UserService, $filter) {
 
     function ItemManager () {
-
+        
     }
     
     ItemManager.prototype.create = function (factory, item, redirectLocation, reload) {
@@ -23,11 +23,11 @@ angular.module('item')
             if (reload) {
                 _this.data.push(itemCreated.item);
             }
-            Notification.primary({ message: 'the item was succesfully saved :)', title: 'Success', positionY: 'bottom', positionX: 'left' });
+            Notification.primary({ message: $filter('translate')('SAVED'), positionY: 'bottom', positionX: 'left' });
             if (redirectLocation)
                 $state.go(redirectLocation);
         }.bind(this), function (error) {
-            Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')', positionY: 'bottom', positionX: 'left' });
+            Notification.error({ message: $filter('translate')('ERROR')+" : "+error.status + ' - ' + error.data.message, positionY: 'bottom', positionX: 'left' });
             if (error.status = 401) {
                 return $q.reject({ authenticated: false });
             }
@@ -41,11 +41,11 @@ angular.module('item')
             'id': item._id
         };
         this.factory.update(params, item, function (item) {
-            Notification.primary({ message: 'the item was succesfully updated :)', title: 'Success', positionY: 'bottom', positionX: 'left' });
+            Notification.primary({ message: $filter('translate')('UPDATED'), positionY: 'bottom', positionX: 'left' });
             if (redirectLocation)
                 $state.go(redirectLocation);
         }.bind(this), function (error) {
-            Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')', positionY: 'bottom', positionX: 'left' });
+            Notification.error({ message: $filter('translate')('ERROR')+" : "+error.status + ' - ' + error.data.message, positionY: 'bottom', positionX: 'left' });
             if (error.status = 401) {
                 return $q.reject({ authenticated: false });
             }
@@ -67,11 +67,11 @@ angular.module('item')
                             return obj._id === itemID;
                         });
                     }
-                    Notification.info({ message: 'the item was succesfully deleted :)', title: 'Success', positionY: 'bottom', positionX: 'left' });
+                    Notification.info({ message: $filter('translate')('DELETED'), positionY: 'bottom', positionX: 'left' });
                     if (redirectLocation)
                         $state.go(redirectLocation);
                 }.bind(this), function (error) {
-                    Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')', positionY: 'bottom', positionX: 'left' });
+                    Notification.error({ message: $filter('translate')('ERROR')+" : "+error.status + ' - ' + error.data.message, positionY: 'bottom', positionX: 'left' });
                     if (error.status = 401) {
                         return $q.reject({ authenticated: false });
                     }

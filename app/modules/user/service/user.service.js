@@ -7,7 +7,7 @@
  * @description Lead the user list
  */
 angular.module('user')
-  .service('UserService', function (UserFactory, Notification, $state, $cookies) {
+  .service('UserService', function (UserFactory, Notification, $state, TranslationService, $cookies, $filter, $window) {
 
     function User() {
         this.factory = UserFactory;
@@ -16,21 +16,24 @@ angular.module('user')
             _id: null,
             firstname: null,
             lastname: null,
-            username: null
+            username: null,
+            lang: null
         };
 
         var favoriteCookie = $cookies.getObject('PersonnalExpense');        
         
         if (favoriteCookie)
             this.user = favoriteCookie;
+
+        TranslationService.changeLanguage(this.user.lang || $window.navigator.language);
     }
 
     User.prototype.isConnectedResolve = function($stateParams, $state, $promise) {
         return $promise.then(function(datas) {
             return datas;
-        }, function (error) {
+        }.bind(this), function (error) {
             if (error.status = 401) {
-                Notification.error({ message: error.data.message, title: 'Not Connected', positionY: 'bottom', positionX: 'left' });
+                Notification.error({ message: $filter('translate')('401'), positionY: 'bottom', positionX: 'left' });
                 return $q.reject({ authenticated: false });
             }
         }.bind(this));
@@ -49,11 +52,13 @@ angular.module('user')
 
         this.factory.connect({verb: 'connect'}, params, function (user) {
             this.user = user.item;
-            $cookies.putObject('PersonnalExpense', this.user);
-            Notification.info({ title: 'Connected', message: 'Hello '+this.user.username, positionY: 'bottom', positionX: 'left' });
-            $state.go('charts');
+            TranslationService.changeLanguage(this.user.lang || $window.navigator.language, function () {
+                 $cookies.putObject('PersonnalExpense', this.user);
+                Notification.info({ message: $filter('translate')('CONNECTED'), positionY: 'bottom', positionX: 'left' });
+                $state.go('charts');
+            }.bind(this));
         }.bind(this), function (error) {
-            Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')', positionY: 'bottom', positionX: 'left' });
+            Notification.error({ message: $filter('translate')('ERROR')+" :"+error.status + ' - ' + error.data.message, positionY: 'bottom', positionX: 'left' });
         }.bind(this));
     }
 
@@ -64,13 +69,42 @@ angular.module('user')
         };
 
         this.factory.disconnect({verb: 'disconnect'}, params, function (user) {
-            $cookies.remove('PersonnalExpense');
-            Notification.info({ title: 'Disconnected', message: 'Goodbye '+this.user.username+'!' });
-            this.user = user.item;
-            $state.go('user.login');
+            Notification.info({ message: $filter('translate')('DISCONNECTED'), positionY: 'bottom', positionX: 'left' });
+            TranslationService.changeLanguage(window.navigator.language, function () {
+                $cookies.remove('PersonnalExpense');
+                this.user = {
+                    token: null,
+                    _id: null,
+                    firstname: null,
+                    lastname: null,
+                    username: null,
+                    lang: null
+                };
+                $state.go('user.login');
+            }.bind(this));
         }.bind(this), function (error) {
-            Notification.error({ message: error.status + ' - ' + error.data.message, title: 'Error (' + error.status + ')', positionY: 'bottom', positionX: 'left', positionY: 'bottom', positionX: 'left' });
+            Notification.error({ message: $filter('translate')('DISCONNECTED')+" : "+error.status + ' - ' + error.data.message, positionY: 'bottom', positionX: 'left' });
         }.bind(this));
+    }
+
+    User.prototype.changeLanguage = function () {
+      var lang = this.user.lang;
+      // todo save en base
+      var params = {
+          'token': this.user.token,
+          'user': this.user._id,
+          'lang': lang
+
+      };
+      this.factory.changeDefaultLanguage({'verb': 'changeDefaultLanguage'}, params, function (itemCreated) {
+          TranslationService.changeLanguage(lang, function () {
+            $cookies.putObject('PersonnalExpense', this.user);
+            Notification.primary({ message: $filter('translate')('LANGUAGE_CHANGED'), positionY: 'bottom', positionX: 'left' });
+            $state.reload()
+          }.bind(this));
+      }.bind(this), function (error) {
+          Notification.error({ message: $filter('translate')('ERROR')+" : "+error.status + ' - ' + error.statusText, positionY: 'bottom', positionX: 'left' });
+      }.bind(this));
     }
 
     return new User();

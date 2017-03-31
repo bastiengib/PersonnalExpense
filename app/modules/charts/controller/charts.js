@@ -48,7 +48,7 @@ angular.module('charts')
         });
       } else {
         this.data = [1];
-        this.labels = ["No expense"];
+        this.labels = ["No expenses"];
       }
     }
 

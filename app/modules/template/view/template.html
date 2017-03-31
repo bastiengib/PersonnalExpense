@@ -23,7 +23,7 @@
 <nav class="navbar navbar-light fixed-bottom bg-faded">
     <form class="form-inline" id="applyForm" name="applyForm" ng-show="template.apply">
       <div class="form-group row" >
-        <label class="col-2 col-form-label">Date</label>
+        <label class="col-2 col-form-label">{{'DATE' | translate}}</label>
         <div class="col-10">
             <input bootstrap-datepicker required type="text" class="form-control"
             placeholder="JJ/MM/AAAA"
@@ -35,7 +35,7 @@
       </div>
     </form>
     <form class="form-inline" ng-click="template.closeUse()">
-        <a class="navbar-brand text-primary" >List of Templates</a>
+        <a class="navbar-brand text-primary" >{{'LIST_OF_TEMPLATES' | translate}}</a>
         <button class="btn btn-outline-danger" ng-click="template.closeUse()" ng-show="template.apply"><i class="fa fa-ban" aria-hidden="true"></i></button>
         <button class="btn btn-outline-primary navbar-toggler-right" ui-sref="template.add"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
     </form>

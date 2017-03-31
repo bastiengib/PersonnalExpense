@@ -3,7 +3,8 @@ angular.module("a1b4Datepicker")
         return {
             restrict: 'E',
             scope: {
-                source:'='
+                source:'=',
+                lang:'='
             },
             templateUrl: "directives/angular-boostrap4-datepicker/datepicker.html",
             controller: 'a1b4DatepickerCtrl',

@@ -11,6 +11,7 @@ angular.module('a1b4Datepicker')
 
     function Datepicker() {
         this.table = [];
+        this.lang = $scope.lang;
     }
 
     Datepicker.prototype.reload = function () {

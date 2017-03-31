@@ -10,7 +10,7 @@
 angular.module('personnalExpenseApp')
 	.controller('MainCtrl', function (UserService) {
 		function MainCtrlClass () {
-			this.UserService = UserService;  
+			this.UserService = UserService;
 		}
 		
 		return new MainCtrlClass();

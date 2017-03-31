@@ -5,24 +5,24 @@
         <p class="lead">
             <div class="input-group">
                 <span class="input-group-addon col-2"><i class="fa fa-user-circle" aria-hidden="true"></i></span>
-                <input ng-model="user.service.user.username" required type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                <input ng-model="user.service.user.username" required type="text" class="form-control" placeholder="{{'USERNAME' | translate}}" aria-describedby="basic-addon1">
             </div>
         </p>
         <p class="lead">
             <div class="input-group">
                 <span class="input-group-addon col-2"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
-                <input ng-model="user.service.user.password" required type="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
+                <input ng-model="user.service.user.password" required type="password" class="form-control" placeholder="{{'PASSWORD' | translate}}" aria-describedby="basic-addon1">
             </div>
         </p>
         <hr class="my-4">
         <p class="lead">
             <button class="btn btn-primary btn-lg col-12" ng-click="user.service.connect()" ng-disabled="!connectForm.$valid">
-                <span class="fa fa-sign-in" aria-hidden="true"></span> Let's go !
+                <span class="fa fa-sign-in" aria-hidden="true"></span> {{'CONNECTION' | translate}}
             </button>
         </p>
         <p class="lead">
-            <button class="btn btn-success col-12" ui-sref="user.add">
-                <span class="fa fa-user-plus" aria-hidden="true"></span> Create an account
+            <button class="btn btn-info col-12" ui-sref="user.add">
+                <span class="fa fa-user-plus" aria-hidden="true"></span> {{'CREATE_ACCOUNT' | translate}}
             </button>
         </p>
     </div>
