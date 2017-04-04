@@ -7,13 +7,15 @@
  * @description Lead the user list
  */
 angular.module('user')
-  .controller('UserCtrl', function ($scope, $filter, UserFactory, ItemManager, UserService, TranslationService) {
+  .controller('UserCtrl', function ($scope, $filter, UserFactory, ItemManager, UserService, DatatableService, TranslationService) {
 
     function User() {
       this.factory = UserFactory;
       this.apply = null;
       this.service = UserService;
+      this.dservice = DatatableService;
       this.data = {};
+      this.form = {export_date: new Date()};
       this.languages = TranslationService.languages;
     }
 

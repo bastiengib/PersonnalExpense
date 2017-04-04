@@ -14,6 +14,7 @@
             </button>
         </p>
     </div>
+
     <div class="card">
         <div class="card-header">
             <h4 class="text-muted">{{'CHANGE_LANGUAGE' | translate}}</h4>
@@ -23,7 +24,29 @@
                 <select class="form-control" ng-model="user.service.user.lang" ng-options="lang.key as lang.value for lang in user.languages">
                 </select>
             </p>
-            <button class="btn btn-primary" ng-click="user.service.changeLanguage()">{{'UPDATE' | translate}}</button>
+            <button class="btn btn-primary col-12" ng-click="user.service.changeLanguage()">{{'UPDATE' | translate}}</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="text-muted">{{'EXPORT_DATATABLE' | translate}}</h4>
+        </div>
+        <div class="card-block">
+            <p class="card-text">
+                <div>
+                    <test-datepicker lang="user.service.user.lang" source="user.form.export_date"></test-datepicker>
+                </div>
+            </p>
+            <button class="btn btn-primary col-12"
+                ng-csv="user.dservice.getCsv(user.form.export_date)" 
+                csv-header="user.dservice.csvHeader" 
+                field-separator="{{user.dservice.fieldSeparator}}"
+                decimal-separator="{{user.dservice.decimalSeparator}}"
+                filename="{{user.dservice.getCsvName()}}"
+                lazy-load="true"
+                add-bom="true">
+                {{'EXPORT' | translate}}</button>
         </div>
     </div>
 </form>

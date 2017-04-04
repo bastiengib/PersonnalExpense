@@ -33,12 +33,26 @@ angular
     'charts'
   ])
   .config(function ($stateProvider, $urlRouterProvider, ChartJsProvider) {
-    $urlRouterProvider.otherwise('/user/login');
+    //$urlRouterProvider.otherwise('/user/login');
+    $urlRouterProvider.otherwise(function($injector){
+      var service = $injector.get('UserService');
+      var retour = '/404'; // 404
+      if(!service.isConnected())
+        retour = '/'; // home
+       return retour;
+    });
     $stateProvider
     .state(
       'home', {
         url: '/',
         templateUrl: 'modules/main/view/main.html',
+        controller: 'MainCtrl',
+          controllerAs: 'main',
+      }
+    ).state(
+      '404', {
+        url: '/404',
+        templateUrl: 'modules/main/view/404.html',
         controller: 'MainCtrl',
           controllerAs: 'main',
       }

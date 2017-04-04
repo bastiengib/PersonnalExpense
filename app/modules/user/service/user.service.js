@@ -40,7 +40,7 @@ angular.module('user')
     }
 
     User.prototype.isConnected = function() {
-        return this.token ? true : false;
+        return this.user.token ? true : false;
     }
 
     User.prototype.connect = function () {

@@ -74,7 +74,10 @@
     "DISCONNECTED": "Deconnexion réussi, au revoir :'(",
     "CONNECTED": "Connexion réussi, bonjour :)",
     "401": "Qui es-tu (-_-) ?",
+    "404": "Où crois-tu aller comme ça (x_x) ?",
     "CHANGE_LANGUAGE" : "Changer la langue",
-    "LANGUAGE_CHANGED": "Cocorico !"
+    "LANGUAGE_CHANGED": "Cocorico !",
+    "EXPORT_DATATABLE" : "Exporter les dépenses (csv)",
+    "EXPORT": "Exporter"
 }
    

@@ -87,8 +87,11 @@ angular.module('TranslateModule')
                 "DISCONNECTED": "Disconnected, bye bye :'(",
                 "CONNECTED": "Connected, bonjour :)",
                 "401": "Who are you (-_-) ?",
+                "404": "We can't find the requested page (x_x)",
                 "CHANGE_LANGUAGE" : "Change the language",
-                "LANGUAGE_CHANGED": "The language was succesfully  updated :)"
+                "LANGUAGE_CHANGED": "The language was succesfully  updated :)",
+                "EXPORT_DATATABLE" : "Export the expenses (csv)",
+                "EXPORT": "Export"
             }
         }
     }

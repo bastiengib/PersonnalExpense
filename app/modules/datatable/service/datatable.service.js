@@ -29,13 +29,22 @@ angular.module('datatable')
       return this.csvName + date + "_" + user + this.csvFileType;
     }
 
-    Service.prototype.getCsv = function () {
+    Service.prototype.getCsv = function ($date) {
+      $date = ($date || new Date());
       var params = {
           'token': UserService.user.token,
           'user': UserService.user._id,
-          'verb': 'export'
+          'verb': 'export',
+          'y': $date.getYear() - 100 + 2000,
+          'm': $date.getMonth(),
+          'd': $date.getDate(),
+          'date': $date
       };
-      return DatatableFactory.export(params).$promise;
+      return DatatableFactory.export(params, function (data) {
+        return data;
+      }, function (err) {
+        
+      });
     }
 
     Service.prototype.getNbOfPages = function () {
