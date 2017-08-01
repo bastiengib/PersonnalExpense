@@ -9,6 +9,14 @@ body {
   padding: 0;
 }
 
+.bottom-card {
+  position: fixed;
+  bottom: 60px;
+  width: 300px;
+  left: calc((100% - 300px) / 2);
+  box-shadow: 1px 1px 3px #888888;
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,

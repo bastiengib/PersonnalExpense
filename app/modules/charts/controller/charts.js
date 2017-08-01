@@ -16,13 +16,6 @@ angular.module('charts')
         return obj._id;
       });
       this.load(ChartsResolve);
-      /*$scope.labels2 = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-      $scope.series2 = ['Series A', 'Series B'];
-
-      $scope.data2 = [
-        [65, 59, 80, 81, 56, 55, 40],
-        [28, 48, 40, 19, 86, 27, 90]
-      ];*/
     }
 
     Charts.prototype.load = function ($resolve) {
@@ -65,6 +58,14 @@ angular.module('charts')
         this.factory.getCharts(params,function (result) {
           this.load(result);
         }.bind(this));
+    }
+
+    Charts.prototype.totalThisMonth = function () {
+        var total = 0;
+        angular.forEach(this.data, function(obj) {
+          total += obj;
+        });
+        return total;
     }
 
     return new Charts();

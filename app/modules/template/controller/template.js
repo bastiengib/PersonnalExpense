@@ -72,6 +72,8 @@ angular.module('template')
 
       this.apply = {
         id: $id,
+        name: expense.name,
+        amount: expense.amount,
         date: new Date()
       };
     }

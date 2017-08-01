@@ -54,7 +54,7 @@
     "BACK_TO_LOGIN": "Back to login",
     "BACK_TO_CHARTS": "Back to charts",
     "CHARTS": "Charts",
-    "DATATABLE": "Expense",
+    "DATATABLE": "Expenses",
     "CREATE_DATATABLE": "Create an expense",
     "UPDATE_DATATABLE": "Update the expense",
     "CREATE_TEMPLATE": "Create a template",
@@ -78,6 +78,7 @@
     "CHANGE_LANGUAGE" : "Change the language",
     "LANGUAGE_CHANGED": "God save the queen ...",
     "EXPORT_DATATABLE" : "Export the expenses (csv)",
-    "EXPORT": "Export"
+    "EXPORT": "Export",
+    "TOTAL_MONTH": "Total this month"
 }
    

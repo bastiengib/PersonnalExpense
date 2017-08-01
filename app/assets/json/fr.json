@@ -54,7 +54,7 @@
     "BACK_TO_LOGIN": "Se connecter",
     "BACK_TO_CHARTS": "Graphiques",
     "CHARTS": "Graphiques",
-    "DATATABLE": "Dépense",
+    "DATATABLE": "Dépenses",
     "CREATE_DATATABLE": "Créer une dépense",
     "UPDATE_DATATABLE": "Modifier la dépense",
     "CREATE_TEMPLATE": "Créer un modèle",
@@ -78,6 +78,7 @@
     "CHANGE_LANGUAGE" : "Changer la langue",
     "LANGUAGE_CHANGED": "Cocorico !",
     "EXPORT_DATATABLE" : "Exporter les dépenses (csv)",
-    "EXPORT": "Exporter"
+    "EXPORT": "Exporter",
+    "TOTAL_MONTH": "Total du mois"
 }
    

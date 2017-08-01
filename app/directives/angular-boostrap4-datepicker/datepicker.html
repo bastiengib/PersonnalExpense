@@ -28,13 +28,13 @@
                 <div class="align-self-center">
                     <table>
                         <tr>
+                            <td class="text-center text-muted">{{'Sun' | translateDay:ctrl.lang}}</td>
                             <td class="text-center text-muted">{{'Mon' | translateDay:ctrl.lang}}</td>
                             <td class="text-center text-muted">{{'Tue' | translateDay:ctrl.lang}}</td>
                             <td class="text-center text-muted">{{'Wed' | translateDay:ctrl.lang}}</td>
                             <td class="text-center text-muted">{{'Thu' | translateDay:ctrl.lang}}</td>
                             <td class="text-center text-muted">{{'Fri' | translateDay:ctrl.lang}}</td>
                             <td class="text-center text-muted">{{'Sat' | translateDay:ctrl.lang}}</td>
-                            <td class="text-center text-muted">{{'Sun' | translateDay:ctrl.lang}}</td>
                         </tr>
                         <tr ng-repeat="week in ctrl.table">
                             <td ng-repeat="day in week">
